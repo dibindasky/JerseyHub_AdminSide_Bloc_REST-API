@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
-import '../utils/colors.dart';
-import '../utils/constant.dart';
+import '../../../../business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/constant.dart';
 
 class CoustomSearchField extends StatelessWidget {
   const CoustomSearchField({
@@ -21,7 +21,7 @@ class CoustomSearchField extends StatelessWidget {
         height: sWidth * 0.10,
         child: TextField(
           readOnly: context.read<BottomBarCubitCubit>().state.currentIndex == 0,
-          onTap: () { 
+          onTap: () {
             if (context.read<BottomBarCubitCubit>().state.currentIndex == 0) {
               context.read<BottomBarCubitCubit>().changeIndex(1);
             }

@@ -12,7 +12,7 @@ class ScreenSplash extends StatelessWidget {
   Widget build(BuildContext context) {
     sizeFinder(context);
     Timer(const Duration(seconds: 1), () {
-      Navigator.popAndPushNamed(context, Routes.bottomBar);
+      Navigator.popAndPushNamed(context, Routes.signInPage);
       // Navigator.popAndPushNamed(context, Routes.testScreen);
     });
     return Scaffold(

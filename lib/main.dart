@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/Auth/auth_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
 
 import 'application/presentation/routes/routes.dart';
@@ -21,23 +22,18 @@ class JerseyHubUser extends StatelessWidget {
         BlocProvider(
           create: (context) => BottomBarCubitCubit(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => AuthBloc(),
+        ),
       ],
       child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        primarySwatch: Colors.blue
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            primarySwatch: Colors.blue),
+        initialRoute: Routes.initial,
+        onGenerateRoute: routeGenerator.onGenerateRoute,
       ),
-      initialRoute: Routes.initial,
-      onGenerateRoute: routeGenerator.onGenerateRoute,
-    ),
     );
   }
 }
-
-
-
-

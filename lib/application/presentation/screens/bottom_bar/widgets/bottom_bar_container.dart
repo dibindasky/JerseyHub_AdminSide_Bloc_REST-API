@@ -27,44 +27,45 @@ class BottomNavigationContainer extends StatelessWidget {
             return Theme(
               data: ThemeData(splashColor: Colors.transparent),
               child: BottomNavigationBar(
-                  type: BottomNavigationBarType.fixed,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  selectedFontSize: 0,
-                  unselectedFontSize: 0,
-                  selectedItemColor: kWhite,
-                  unselectedItemColor: kWhite.withOpacity(0.8),
-                  iconSize: sWidth * 0.06,
-                  currentIndex: state.currentIndex,
-                  onTap: (index) {
-                    context.read<BottomBarCubitCubit>().changeIndex(index);
-                  },
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: BottomBarIcon(
-                          isSelected: state.currentIndex == 0,
-                          icon:Iconsax.home,
-                        ),
-                        label: ''),
-                    BottomNavigationBarItem(
-                        icon: BottomBarIcon(
-                          isSelected: state.currentIndex == 1,
-                          icon: Iconsax.search_normal_1,
-                        ),
-                        label: ''),
-                    BottomNavigationBarItem(
-                        icon: BottomBarIcon(
-                          isSelected: state.currentIndex == 2,
-                          icon: Iconsax.lovely,
-                        ),
-                        label: ''),
-                    BottomNavigationBarItem(
-                        icon: BottomBarIcon(
-                          isSelected: state.currentIndex == 3,
-                          icon: Iconsax.profile_circle,
-                        ),
-                        label: ''),
-                  ]),
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                selectedFontSize: 0,
+                unselectedFontSize: 0,
+                selectedItemColor: kWhite,
+                unselectedItemColor: kWhite.withOpacity(0.8),
+                iconSize: sWidth * 0.06,
+                currentIndex: state.currentIndex,
+                onTap: (index) {
+                  context.read<BottomBarCubitCubit>().changeIndex(index);
+                },
+                items: [
+                  BottomNavigationBarItem(
+                      icon: BottomBarIcon(
+                        isSelected: state.currentIndex == 0,
+                        icon: Iconsax.home,
+                      ),
+                      label: ''),
+                  BottomNavigationBarItem(
+                      icon: BottomBarIcon(
+                        isSelected: state.currentIndex == 1,
+                        icon: Iconsax.percentage_circle,
+                      ),
+                      label: ''),
+                  BottomNavigationBarItem(
+                      icon: BottomBarIcon(
+                        isSelected: state.currentIndex == 2,
+                        icon: Iconsax.add,
+                      ),
+                      label: ''),
+                  BottomNavigationBarItem(
+                      icon: BottomBarIcon(
+                        isSelected: state.currentIndex == 3,
+                        icon: Iconsax.people5,
+                      ),
+                      label: ''),
+                ],
+              ),
             );
           },
         ),

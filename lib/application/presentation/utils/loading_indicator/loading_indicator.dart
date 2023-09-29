@@ -5,7 +5,8 @@ import '../constant.dart';
 
 class LoadingAnimation extends StatelessWidget {
   const LoadingAnimation({
-    super.key, required this.width,
+    super.key,
+    required this.width,
   });
 
   final double width;
@@ -15,8 +16,7 @@ class LoadingAnimation extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: sWidth * width,
-        child:
-            const LoadingIndicator(indicatorType: Indicator.ballPulse),
+        child: const LoadingIndicator(indicatorType: Indicator.ballPulse),
       ),
     );
   }

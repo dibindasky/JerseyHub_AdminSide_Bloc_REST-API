@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/constant.dart';
 
-class PopularProductGrid extends StatelessWidget {
-  const PopularProductGrid({
+class ProductGridHome extends StatelessWidget {
+  const ProductGridHome({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 20,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 1 / 1.5,
             mainAxisSpacing: 10,
@@ -41,7 +41,7 @@ class PopularProductGrid extends StatelessWidget {
                     top: 5,
                     child: CircleAvatar(
                       backgroundColor: kWhite,
-                      child: Icon(Icons.favorite_border_outlined),
+                      child: Icon(Iconsax.edit),
                     ),
                   ),
                 ],
@@ -60,8 +60,8 @@ class PopularProductGrid extends StatelessWidget {
                   ),
                   const Spacer(),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: const BoxDecoration(
                         color: kGreen,
                         borderRadius: BorderRadius.all(kRadius5)),

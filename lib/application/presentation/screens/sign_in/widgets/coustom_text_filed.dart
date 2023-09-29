@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
-import '../utils/constant.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/constant.dart';
 
 class CoustomTextField extends StatelessWidget {
   const CoustomTextField(
       {super.key,
       this.isPassword = false,
       required this.label,
-      this.obscureIcon = false,
+      required this.controller,
       this.keyboardType = TextInputType.text});
 
   final String label;
-  final bool obscureIcon;
   final TextInputType keyboardType;
   final bool isPassword;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,11 @@ class CoustomTextField extends StatelessWidget {
           decoration: const BoxDecoration(
               color: kWhite, borderRadius: BorderRadius.all(kRadius5)),
           child: TextField(
+            controller: controller,
+            obscureText: isPassword,
             style: kronOne(),
             keyboardType: keyboardType,
             decoration: InputDecoration(
-              prefixText: keyboardType == TextInputType.phone ? '+91 - ' : null,
               suffix: isPassword
                   ? IconButton(
                       icon: const Icon(
