@@ -18,22 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? message) clientFailure,
-    required TResult Function(String? message) serverFailure,
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
     required TResult Function() tokenExpire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? message)? clientFailure,
-    TResult? Function(String? message)? serverFailure,
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
     TResult? Function()? tokenExpire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? message)? clientFailure,
-    TResult Function(String? message)? serverFailure,
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
     TResult Function()? tokenExpire,
     required TResult orElse(),
   }) =>
@@ -84,8 +84,6 @@ abstract class _$$ClientFailureImplCopyWith<$Res> {
   factory _$$ClientFailureImplCopyWith(
           _$ClientFailureImpl value, $Res Function(_$ClientFailureImpl) then) =
       __$$ClientFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? message});
 }
 
 /// @nodoc
@@ -95,81 +93,57 @@ class __$$ClientFailureImplCopyWithImpl<$Res>
   __$$ClientFailureImplCopyWithImpl(
       _$ClientFailureImpl _value, $Res Function(_$ClientFailureImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_$ClientFailureImpl(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ClientFailureImpl implements _ClientFailure {
-  _$ClientFailureImpl({required this.message});
-
-  @override
-  final String? message;
+  _$ClientFailureImpl();
 
   @override
   String toString() {
-    return 'Failure.clientFailure(message: $message)';
+    return 'Failure.clientFailure()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClientFailureImpl &&
-            (identical(other.message, message) || other.message == message));
+        (other.runtimeType == runtimeType && other is _$ClientFailureImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ClientFailureImplCopyWith<_$ClientFailureImpl> get copyWith =>
-      __$$ClientFailureImplCopyWithImpl<_$ClientFailureImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? message) clientFailure,
-    required TResult Function(String? message) serverFailure,
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
     required TResult Function() tokenExpire,
   }) {
-    return clientFailure(message);
+    return clientFailure();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? message)? clientFailure,
-    TResult? Function(String? message)? serverFailure,
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
     TResult? Function()? tokenExpire,
   }) {
-    return clientFailure?.call(message);
+    return clientFailure?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? message)? clientFailure,
-    TResult Function(String? message)? serverFailure,
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
     TResult Function()? tokenExpire,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
-      return clientFailure(message);
+      return clientFailure();
     }
     return orElse();
   }
@@ -210,13 +184,7 @@ class _$ClientFailureImpl implements _ClientFailure {
 }
 
 abstract class _ClientFailure implements Failure {
-  factory _ClientFailure({required final String? message}) =
-      _$ClientFailureImpl;
-
-  String? get message;
-  @JsonKey(ignore: true)
-  _$$ClientFailureImplCopyWith<_$ClientFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory _ClientFailure() = _$ClientFailureImpl;
 }
 
 /// @nodoc
@@ -224,8 +192,6 @@ abstract class _$$ServerFailureImplCopyWith<$Res> {
   factory _$$ServerFailureImplCopyWith(
           _$ServerFailureImpl value, $Res Function(_$ServerFailureImpl) then) =
       __$$ServerFailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? message});
 }
 
 /// @nodoc
@@ -235,81 +201,57 @@ class __$$ServerFailureImplCopyWithImpl<$Res>
   __$$ServerFailureImplCopyWithImpl(
       _$ServerFailureImpl _value, $Res Function(_$ServerFailureImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_$ServerFailureImpl(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$ServerFailureImpl implements _ServerFailure {
-  _$ServerFailureImpl({required this.message});
-
-  @override
-  final String? message;
+  _$ServerFailureImpl();
 
   @override
   String toString() {
-    return 'Failure.serverFailure(message: $message)';
+    return 'Failure.serverFailure()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ServerFailureImpl &&
-            (identical(other.message, message) || other.message == message));
+        (other.runtimeType == runtimeType && other is _$ServerFailureImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
-      __$$ServerFailureImplCopyWithImpl<_$ServerFailureImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? message) clientFailure,
-    required TResult Function(String? message) serverFailure,
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
     required TResult Function() tokenExpire,
   }) {
-    return serverFailure(message);
+    return serverFailure();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? message)? clientFailure,
-    TResult? Function(String? message)? serverFailure,
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
     TResult? Function()? tokenExpire,
   }) {
-    return serverFailure?.call(message);
+    return serverFailure?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? message)? clientFailure,
-    TResult Function(String? message)? serverFailure,
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
     TResult Function()? tokenExpire,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
-      return serverFailure(message);
+      return serverFailure();
     }
     return orElse();
   }
@@ -350,13 +292,7 @@ class _$ServerFailureImpl implements _ServerFailure {
 }
 
 abstract class _ServerFailure implements Failure {
-  factory _ServerFailure({required final String? message}) =
-      _$ServerFailureImpl;
-
-  String? get message;
-  @JsonKey(ignore: true)
-  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  factory _ServerFailure() = _$ServerFailureImpl;
 }
 
 /// @nodoc
@@ -397,8 +333,8 @@ class _$TokenExpireImpl implements _TokenExpire {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? message) clientFailure,
-    required TResult Function(String? message) serverFailure,
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
     required TResult Function() tokenExpire,
   }) {
     return tokenExpire();
@@ -407,8 +343,8 @@ class _$TokenExpireImpl implements _TokenExpire {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? message)? clientFailure,
-    TResult? Function(String? message)? serverFailure,
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
     TResult? Function()? tokenExpire,
   }) {
     return tokenExpire?.call();
@@ -417,8 +353,8 @@ class _$TokenExpireImpl implements _TokenExpire {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? message)? clientFailure,
-    TResult Function(String? message)? serverFailure,
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
     TResult Function()? tokenExpire,
     required TResult orElse(),
   }) {

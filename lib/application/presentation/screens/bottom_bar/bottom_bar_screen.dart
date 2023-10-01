@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/Auth/auth_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
+import 'package:jerseyhub_admin/application/presentation/routes/routes.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/home/home_screen.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 
@@ -24,9 +26,15 @@ class ScreenBottombar extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          'Jersey Hub',
-          style: kronOne(fontSize: 0.05),
+        title: InkWell(
+          onLongPress: () {
+            context.read<AuthBloc>().add(const AuthEvent.signOut());
+            Navigator.pushNamedAndRemoveUntil(context, Routes.signInPage, (route) => false);
+          },
+          child: Text(
+            'Jersey Hub',
+            style: kronOne(fontSize: 0.05),
+          ),
         ),
         actions: const [CartIconButton(), kWidth20],
       ),

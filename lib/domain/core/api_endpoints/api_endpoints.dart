@@ -1,5 +1,6 @@
 class ApiEndPoints {
-  static String baseUrl = 'http://192.168.195.227:3000/admin';
+  static String baseUrl = 'http://192.168.1.5:3000/admin';
+  // static String baseUrl = 'http://192.168.195.227:3000/admin';
 
   static String signIn = '/adminlogin';
   static String addCategory = '/category/add';
