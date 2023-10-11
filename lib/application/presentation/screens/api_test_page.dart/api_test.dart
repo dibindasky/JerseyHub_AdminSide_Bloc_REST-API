@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 
 class ApiTestScreen extends StatefulWidget {
   ApiTestScreen({super.key});
@@ -26,12 +27,9 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
             ElevatedButton(
               onPressed: () async {
                 print('pressed');
-                String adminAcces =
-                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiIiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2OTU5NjI0MjIsImlhdCI6MTY5NTk2MTIyMn0.SDYtY1JbK_1xMlRkBBIDNOhe3G7ZNCMDtueopsc_ErE';
-                String adminRefresh =
-                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiIiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE2OTg1NTMyMjIsImlhdCI6MTY5NTk2MTIyMn0.CEbQNJ87Xptxg_0zCOIKWBZz2RqhFa7MNlIYG7GTOb0';
-                String token =
-                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkaWJpbkBnbWFpbC5jb20iLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNjk1OTYxNzQ0LCJpYXQiOjE2OTU3ODg5NDR9.3Jx6qO_8jDdoqzuen1jihBe4wl4SwSIcmyGoxS-iQkE';
+                final token=await SharedPref.getToken();
+                String adminAcces = token.accessToken;
+                String adminRefresh =token.refreshToken;
                 Dio dio = Dio();
                 try {
                   // dio.options.baseUrl='http://192.168.195.227:3000';
@@ -40,7 +38,7 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
                   dio.options.headers['RefreshToken'] = adminRefresh;
                   Response response = await dio.post(
                       'http://192.168.195.227:3000/admin/category/add',
-                      data: {'category': 'Football', 'id': 0});
+                      data: {'category': 'Basketball', 'id': 2});
                   print(response.statusCode);
                   testRsposnseCode = response.statusCode.toString();
                   testRsposnse = response.data.toString();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
+import 'package:jerseyhub_admin/application/presentation/routes/routes.dart';
 
 import '../../../utils/colors.dart';
 
@@ -16,7 +16,7 @@ class CartIconButton extends StatelessWidget {
         CircleAvatar(
           backgroundColor: kGrey,
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {Navigator.pushNamed(context, Routes.testScreen);},
             icon: const Icon(Iconsax.shopping_bag),
           ),
         ),

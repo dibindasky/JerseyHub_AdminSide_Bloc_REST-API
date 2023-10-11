@@ -2,12 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jerseyhub_admin/data/api/auth/auth.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_model/login_model.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_response/login_response.dart';
 import 'package:jerseyhub_admin/domain/models/token/token.dart';
-
-import '../../../data/api/auth/auth.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

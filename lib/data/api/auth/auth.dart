@@ -8,7 +8,7 @@ import 'package:jerseyhub_admin/domain/models/login_models/login_model/login_mod
 import 'package:jerseyhub_admin/domain/models/login_models/login_response/login_response.dart';
 import 'package:jerseyhub_admin/domain/repositories/authentication_repository.dart';
 
-class ApiAuth extends AuthRepository {
+class ApiAuth implements AuthRepository {
   final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
 
   @override
@@ -25,9 +25,9 @@ class ApiAuth extends AuthRepository {
       }
     } on DioException catch (dioError) {
       log('dio error => ${dioError.message.toString()}');
-      return Left(ErrorMsg(message: 'can\'t authenticate user'));
+      return Left(ErrorMsg(message: 'something went wrong'));
     } catch (e) {
-      log('dio error => ${e.toString()}');
+      log('error => ${e.toString()}');
       return Left(ErrorMsg(message: e.toString()));
     }
   }

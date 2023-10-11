@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/Auth/auth_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/add_inventory/add_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
 
 import 'application/presentation/routes/routes.dart';
@@ -24,6 +25,9 @@ class JerseyHubUser extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AddInventoryBloc(),
         ),
       ],
       child: MaterialApp(

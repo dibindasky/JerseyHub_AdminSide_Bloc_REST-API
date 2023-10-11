@@ -11,8 +11,8 @@ import 'package:jerseyhub_admin/application/presentation/widgets/custom_text_fie
 
 const List<String> catogeryItems = ['Football', 'Cricket', 'Basketball'];
 
-class ScreenAddInventory extends StatelessWidget {
-  const ScreenAddInventory({super.key});
+class ScreenEditInventory extends StatelessWidget {
+  const ScreenEditInventory({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +137,7 @@ class ScreenAddInventory extends StatelessWidget {
                                     message: 'choose catogery and try again');
                                 return;
                               } else {
-                                formMap['category_id'] = 'Football';
-                                // formMap['category_id'] = state.catogoryId;
+                                formMap['category_id'] = state.catogoryId;
                               }
                               formMap['product_name'] = context
                                   .read<AddInventoryBloc>()

@@ -55,7 +55,7 @@ class BottomNavigationContainer extends StatelessWidget {
                   BottomNavigationBarItem(
                       icon: BottomBarIcon(
                         isSelected: state.currentIndex == 2,
-                        icon: Iconsax.add,
+                        icon: Iconsax.additem,
                       ),
                       label: ''),
                   BottomNavigationBarItem(
