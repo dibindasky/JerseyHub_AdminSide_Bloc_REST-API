@@ -18,7 +18,6 @@ class CoustomSearchField extends StatelessWidget {
         width: sWidth * 0.90,
         height: sWidth * 0.10,
         child: const TextField(
-         
           decoration: InputDecoration(
             hintText: 'what are you looking for?',
             border: InputBorder.none,

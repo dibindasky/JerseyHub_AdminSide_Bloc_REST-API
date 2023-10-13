@@ -16,7 +16,9 @@ class CartIconButton extends StatelessWidget {
         CircleAvatar(
           backgroundColor: kGrey,
           child: IconButton(
-            onPressed: () {Navigator.pushNamed(context, Routes.testScreen);},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.testScreen);
+            },
             icon: const Icon(Iconsax.shopping_bag),
           ),
         ),

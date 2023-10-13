@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class AddInventoryModel  {
+class AddInventoryModel {
   String catogoryId;
   String productName;
   List<String>? sizes;

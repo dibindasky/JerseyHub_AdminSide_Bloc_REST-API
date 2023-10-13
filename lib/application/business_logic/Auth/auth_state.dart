@@ -10,6 +10,6 @@ class AuthState with _$AuthState {
       String? message,
       LoginResponse? loginResponse}) = _Initial;
 
-  factory AuthState.initial() =>
-      const AuthState(isLoading: false, hasError: false, obscure: true,isLoggedIn: false);
+  factory AuthState.initial() => const AuthState(
+      isLoading: false, hasError: false, obscure: true, isLoggedIn: false);
 }

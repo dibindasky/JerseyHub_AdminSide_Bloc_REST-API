@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +6,8 @@ import 'package:jerseyhub_admin/application/presentation/screens/inventory/add_i
 import 'package:jerseyhub_admin/application/presentation/utils/image_picker/image_picker.dart';
 import 'package:jerseyhub_admin/data/api/inventry/inventory.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
-import 'package:jerseyhub_admin/domain/models/inventory/add/add_inventory_response_model.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/add/add_inventory_response_model/add_inventory_response_model.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
 
 part 'add_inventory_event.dart';
 part 'add_inventory_state.dart';
@@ -21,7 +20,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
   final TextEditingController productQuantityController =
       TextEditingController();
   final GlobalKey<FormState> inventoryKey = GlobalKey<FormState>();
-  final sizeList =['S','M','L','XL','XXL'];
+  final sizeList = ['S', 'M', 'L', 'XL', 'XXL'];
 
   AddInventoryBloc() : super(AddInventoryState.initial()) {
     on<_AddJersey>((event, emit) async {
@@ -34,6 +33,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
       }, (addInventoryResponseModel) {
         emit(state.copyWith(
             isLoading: false,
+            isAdded: true,
             addInventoryResponseModel: addInventoryResponseModel));
       });
     });
@@ -63,22 +63,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
     });
 
     on<_PickSize>((event, emit) async {
-      final List<bool> list = [];
-      String sizeString=''; 
-      for (int i = 0; i < 5; i++) {
-        if (i == event.index) {
-          list.add(!state.sizes[i]);
-        } else {
-          list.add(state.sizes[i]);
-        }
-        if(list[i]){
-          if(sizeString.isNotEmpty){
-            sizeString+=',';
-          }
-          sizeString+=sizeList[i];
-        }
-      }
-      emit(state.copyWith(sizes: list,size: sizeString));
+      emit(state.copyWith(size: event.size));
     });
 
     on<_AddImage>((event, emit) async {

@@ -47,7 +47,7 @@ class CoustomTextField extends StatelessWidget {
                   }
                   return null;
                 },
-                obscureText:isPassword? state.obscure:false,
+                obscureText: isPassword ? state.obscure : false,
                 style: kronOne(),
                 keyboardType: keyboardType,
                 decoration: InputDecoration(

@@ -6,12 +6,14 @@ class AddInventoryState with _$AddInventoryState {
       {required bool hasError,
       required bool isLoading,
       required bool isAdded,
-      required List<bool> sizes,
-      File? image,
+      ImageModel? image,
       String? catogory,
       String? size,
       int? catogoryId,
-            AddInventoryResponseModel? addInventoryResponseModel}) = _Initial;
-  factory AddInventoryState.initial() =>
-      const AddInventoryState(hasError: false, isLoading: false,isAdded: false,sizes: [false,false,false,false,false]);
+      AddInventoryResponseModel? addInventoryResponseModel}) = _Initial;
+  factory AddInventoryState.initial() => const AddInventoryState(
+        hasError: false,
+        isLoading: false,
+        isAdded: false,
+      );
 }

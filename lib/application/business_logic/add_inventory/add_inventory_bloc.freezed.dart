@@ -19,7 +19,7 @@ mixin _$AddInventoryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -29,7 +29,7 @@ mixin _$AddInventoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -39,7 +39,7 @@ mixin _$AddInventoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -137,7 +137,7 @@ class _$AddImageImpl implements _AddImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -150,7 +150,7 @@ class _$AddImageImpl implements _AddImage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -163,7 +163,7 @@ class _$AddImageImpl implements _AddImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -230,7 +230,7 @@ abstract class _$$PickSizeImplCopyWith<$Res> {
           _$PickSizeImpl value, $Res Function(_$PickSizeImpl) then) =
       __$$PickSizeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index});
+  $Res call({String size});
 }
 
 /// @nodoc
@@ -244,13 +244,13 @@ class __$$PickSizeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? size = null,
   }) {
     return _then(_$PickSizeImpl(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
+      size: null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -258,14 +258,14 @@ class __$$PickSizeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PickSizeImpl implements _PickSize {
-  const _$PickSizeImpl({required this.index});
+  const _$PickSizeImpl({required this.size});
 
   @override
-  final int index;
+  final String size;
 
   @override
   String toString() {
-    return 'AddInventoryEvent.pickSize(index: $index)';
+    return 'AddInventoryEvent.pickSize(size: $size)';
   }
 
   @override
@@ -273,11 +273,11 @@ class _$PickSizeImpl implements _PickSize {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PickSizeImpl &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.size, size) || other.size == size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, size);
 
   @JsonKey(ignore: true)
   @override
@@ -289,33 +289,33 @@ class _$PickSizeImpl implements _PickSize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
   }) {
-    return pickSize(index);
+    return pickSize(size);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
   }) {
-    return pickSize?.call(index);
+    return pickSize?.call(size);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -323,7 +323,7 @@ class _$PickSizeImpl implements _PickSize {
     required TResult orElse(),
   }) {
     if (pickSize != null) {
-      return pickSize(index);
+      return pickSize(size);
     }
     return orElse();
   }
@@ -373,9 +373,9 @@ class _$PickSizeImpl implements _PickSize {
 }
 
 abstract class _PickSize implements AddInventoryEvent {
-  const factory _PickSize({required final int index}) = _$PickSizeImpl;
+  const factory _PickSize({required final String size}) = _$PickSizeImpl;
 
-  int get index;
+  String get size;
   @JsonKey(ignore: true)
   _$$PickSizeImplCopyWith<_$PickSizeImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -448,7 +448,7 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -461,7 +461,7 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -474,7 +474,7 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -580,7 +580,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -593,7 +593,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -606,7 +606,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -706,7 +706,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -719,7 +719,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -732,7 +732,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -859,7 +859,7 @@ class _$AddJerseyImpl implements _AddJersey {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
-    required TResult Function(int index) pickSize,
+    required TResult Function(String size) pickSize,
     required TResult Function(String selectedCatogory) selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
@@ -872,7 +872,7 @@ class _$AddJerseyImpl implements _AddJersey {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
-    TResult? Function(int index)? pickSize,
+    TResult? Function(String size)? pickSize,
     TResult? Function(String selectedCatogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
@@ -885,7 +885,7 @@ class _$AddJerseyImpl implements _AddJersey {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
-    TResult Function(int index)? pickSize,
+    TResult Function(String size)? pickSize,
     TResult Function(String selectedCatogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
@@ -957,8 +957,7 @@ mixin _$AddInventoryState {
   bool get hasError => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isAdded => throw _privateConstructorUsedError;
-  List<bool> get sizes => throw _privateConstructorUsedError;
-  File? get image => throw _privateConstructorUsedError;
+  ImageModel? get image => throw _privateConstructorUsedError;
   String? get catogory => throw _privateConstructorUsedError;
   String? get size => throw _privateConstructorUsedError;
   int? get catogoryId => throw _privateConstructorUsedError;
@@ -980,8 +979,7 @@ abstract class $AddInventoryStateCopyWith<$Res> {
       {bool hasError,
       bool isLoading,
       bool isAdded,
-      List<bool> sizes,
-      File? image,
+      ImageModel? image,
       String? catogory,
       String? size,
       int? catogoryId,
@@ -1004,7 +1002,6 @@ class _$AddInventoryStateCopyWithImpl<$Res, $Val extends AddInventoryState>
     Object? hasError = null,
     Object? isLoading = null,
     Object? isAdded = null,
-    Object? sizes = null,
     Object? image = freezed,
     Object? catogory = freezed,
     Object? size = freezed,
@@ -1024,14 +1021,10 @@ class _$AddInventoryStateCopyWithImpl<$Res, $Val extends AddInventoryState>
           ? _value.isAdded
           : isAdded // ignore: cast_nullable_to_non_nullable
               as bool,
-      sizes: null == sizes
-          ? _value.sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as ImageModel?,
       catogory: freezed == catogory
           ? _value.catogory
           : catogory // ignore: cast_nullable_to_non_nullable
@@ -1064,8 +1057,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       {bool hasError,
       bool isLoading,
       bool isAdded,
-      List<bool> sizes,
-      File? image,
+      ImageModel? image,
       String? catogory,
       String? size,
       int? catogoryId,
@@ -1086,7 +1078,6 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? hasError = null,
     Object? isLoading = null,
     Object? isAdded = null,
-    Object? sizes = null,
     Object? image = freezed,
     Object? catogory = freezed,
     Object? size = freezed,
@@ -1106,14 +1097,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.isAdded
           : isAdded // ignore: cast_nullable_to_non_nullable
               as bool,
-      sizes: null == sizes
-          ? _value._sizes
-          : sizes // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as File?,
+              as ImageModel?,
       catogory: freezed == catogory
           ? _value.catogory
           : catogory // ignore: cast_nullable_to_non_nullable
@@ -1141,13 +1128,11 @@ class _$InitialImpl implements _Initial {
       {required this.hasError,
       required this.isLoading,
       required this.isAdded,
-      required final List<bool> sizes,
       this.image,
       this.catogory,
       this.size,
       this.catogoryId,
-      this.addInventoryResponseModel})
-      : _sizes = sizes;
+      this.addInventoryResponseModel});
 
   @override
   final bool hasError;
@@ -1155,16 +1140,8 @@ class _$InitialImpl implements _Initial {
   final bool isLoading;
   @override
   final bool isAdded;
-  final List<bool> _sizes;
   @override
-  List<bool> get sizes {
-    if (_sizes is EqualUnmodifiableListView) return _sizes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_sizes);
-  }
-
-  @override
-  final File? image;
+  final ImageModel? image;
   @override
   final String? catogory;
   @override
@@ -1176,7 +1153,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'AddInventoryState(hasError: $hasError, isLoading: $isLoading, isAdded: $isAdded, sizes: $sizes, image: $image, catogory: $catogory, size: $size, catogoryId: $catogoryId, addInventoryResponseModel: $addInventoryResponseModel)';
+    return 'AddInventoryState(hasError: $hasError, isLoading: $isLoading, isAdded: $isAdded, image: $image, catogory: $catogory, size: $size, catogoryId: $catogoryId, addInventoryResponseModel: $addInventoryResponseModel)';
   }
 
   @override
@@ -1189,7 +1166,6 @@ class _$InitialImpl implements _Initial {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isAdded, isAdded) || other.isAdded == isAdded) &&
-            const DeepCollectionEquality().equals(other._sizes, _sizes) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.catogory, catogory) ||
                 other.catogory == catogory) &&
@@ -1202,17 +1178,8 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      hasError,
-      isLoading,
-      isAdded,
-      const DeepCollectionEquality().hash(_sizes),
-      image,
-      catogory,
-      size,
-      catogoryId,
-      addInventoryResponseModel);
+  int get hashCode => Object.hash(runtimeType, hasError, isLoading, isAdded,
+      image, catogory, size, catogoryId, addInventoryResponseModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1226,8 +1193,7 @@ abstract class _Initial implements AddInventoryState {
           {required final bool hasError,
           required final bool isLoading,
           required final bool isAdded,
-          required final List<bool> sizes,
-          final File? image,
+          final ImageModel? image,
           final String? catogory,
           final String? size,
           final int? catogoryId,
@@ -1241,9 +1207,7 @@ abstract class _Initial implements AddInventoryState {
   @override
   bool get isAdded;
   @override
-  List<bool> get sizes;
-  @override
-  File? get image;
+  ImageModel? get image;
   @override
   String? get catogory;
   @override

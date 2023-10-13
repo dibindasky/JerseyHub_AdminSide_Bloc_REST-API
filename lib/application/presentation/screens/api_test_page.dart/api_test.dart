@@ -27,9 +27,11 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
             ElevatedButton(
               onPressed: () async {
                 print('pressed');
-                final token=await SharedPref.getToken();
+                final token = await SharedPref.getToken();
                 String adminAcces = token.accessToken;
-                String adminRefresh =token.refreshToken;
+                String adminRefresh = token.refreshToken;
+                print(adminAcces);
+                print(adminRefresh);
                 Dio dio = Dio();
                 try {
                   // dio.options.baseUrl='http://192.168.195.227:3000';
@@ -38,7 +40,7 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
                   dio.options.headers['RefreshToken'] = adminRefresh;
                   Response response = await dio.post(
                       'http://192.168.195.227:3000/admin/category/add',
-                      data: {'category': 'Basketball', 'id': 2});
+                      data: {'category': 'Football', 'id': 0});
                   print(response.statusCode);
                   testRsposnseCode = response.statusCode.toString();
                   testRsposnse = response.data.toString();
@@ -61,4 +63,3 @@ class _ApiTestScreenState extends State<ApiTestScreen> {
     );
   }
 }
-

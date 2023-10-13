@@ -48,7 +48,10 @@ class ScreenSignIn extends StatelessWidget {
                   BlocConsumer<AuthBloc, AuthState>(
                     listener: (context, state) {
                       if (state.hasError) {
-                        showSnack(context: context, message: state.message!,color: Colors.redAccent);
+                        showSnack(
+                            context: context,
+                            message: state.message!,
+                            color: Colors.redAccent);
                       }
                       if (state.loginResponse != null) {
                         Navigator.pushNamedAndRemoveUntil(

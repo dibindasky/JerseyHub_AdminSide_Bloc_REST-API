@@ -1,20 +1,18 @@
 import 'dart:io';
 
-import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
 
 class PickImage {
-  static Future<File?> getImageFromGallery() async {
+  static Future<ImageModel?> getImageFromGallery() async {
     XFile? pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
-      final tempDir = await getTemporaryDirectory();
-      final path = tempDir.path;
-      final compressedImage = await FlutterImageCompress.compressAndGetFile(
-          pickedImage.path, '$path/newImage.jpg',
-          quality: 25);
-      return File(compressedImage!.path);
+      final fileImage = File(pickedImage.path);
+      return ImageModel(
+          fileImage: fileImage,
+          multipartFile: await MultipartFile.fromFile(fileImage.path));
     }
     return null;
   }

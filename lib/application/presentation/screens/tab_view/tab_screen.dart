@@ -60,7 +60,8 @@ class OffersTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('offer category'),
-                    DropdownButton(dropdownColor: kWhite,
+                    DropdownButton(
+                      dropdownColor: kWhite,
                       //value: state.catogory,
                       borderRadius: const BorderRadius.all(kRadius20),
                       items: catogeryItems
@@ -86,7 +87,8 @@ class OffersTab extends StatelessWidget {
                     ),
                     kHeight10,
                     const Text('Discount Persentage'),
-                    CustomTextFormField(color: kWhite,
+                    CustomTextFormField(
+                      color: kWhite,
                       hintText: 'amount',
                       controller: TextEditingController(),
                       width: sWidth * 0.50,
@@ -169,7 +171,8 @@ class CouponsTab extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomTextFormField(color: kWhite,
+                        CustomTextFormField(
+                          color: kWhite,
                           hintText: 'COUPON CODE',
                           controller: TextEditingController(),
                           width: sWidth * 0.50,
@@ -183,7 +186,8 @@ class CouponsTab extends StatelessWidget {
                     ),
                     kHeight10,
                     const Text('Discount Amount'),
-                    CustomTextFormField(color: kWhite,
+                    CustomTextFormField(
+                      color: kWhite,
                       hintText: 'amount',
                       controller: TextEditingController(),
                       width: sWidth * 0.50,
@@ -264,7 +268,8 @@ class CatogeryTab extends StatelessWidget {
                   children: [
                     const Text('Category Name'),
                     kHeight10,
-                    CustomTextFormField(color: kWhite,
+                    CustomTextFormField(
+                      color: kWhite,
                       hintText: 'Catogery Name',
                       controller: TextEditingController(),
                       width: sWidth * 0.50,
@@ -284,12 +289,18 @@ class CatogeryTab extends StatelessWidget {
         const Text('Avaliable Catogerys'),
         Expanded(
           child: ListView.separated(
-              itemCount: 3,
-              itemBuilder: (context, index) => ListTile(
-                    leading: Text('Sports',style: kronOne(),),
-                    trailing: IconButton(onPressed: (){}, icon: const Icon(Icons.delete_outline_sharp)),
-                  ),
-                  separatorBuilder: (context, index) =>const Divider(),),
+            itemCount: 3,
+            itemBuilder: (context, index) => ListTile(
+              leading: Text(
+                'Sports',
+                style: kronOne(),
+              ),
+              trailing: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.delete_outline_sharp)),
+            ),
+            separatorBuilder: (context, index) => const Divider(),
+          ),
         )
       ],
     );

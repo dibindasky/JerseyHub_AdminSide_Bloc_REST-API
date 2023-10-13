@@ -36,7 +36,7 @@ class ScreenAddInventory extends StatelessWidget {
                     ),
                   ),
                 );
-              } else if (state.isAdded && !state.isLoading) {
+              } else if (state.addInventoryResponseModel != null) {
                 Navigator.pop(context);
                 showSnack(
                     context: context,
@@ -84,11 +84,11 @@ class ScreenAddInventory extends StatelessWidget {
                       width: sWidth,
                       child: const Row(
                         children: [
-                          SizeSelector(size: "S", index: 0),
-                          SizeSelector(size: "M", index: 1),
-                          SizeSelector(size: "L", index: 2),
-                          SizeSelector(size: "XL", index: 3),
-                          SizeSelector(size: "XXL", index: 4),
+                          SizeSelector(size: "S"),
+                          SizeSelector(size: "M"),
+                          SizeSelector(size: "L"),
+                          SizeSelector(size: "XL"),
+                          SizeSelector(size: "XXL"),
                         ],
                       ),
                     ),
@@ -107,10 +107,8 @@ class ScreenAddInventory extends StatelessWidget {
                                 .currentState!
                                 .validate()) {
                               Map<String, dynamic> formMap = {};
-                              print('map created');
                               if (state.image != null) {
-                                formMap['image'] =
-                                    MultipartFile.fromFile(state.image!.path);
+                                formMap['image'] = state.image!.multipartFile;
                               } else {
                                 showSnack(
                                     context: context,
@@ -119,12 +117,11 @@ class ScreenAddInventory extends StatelessWidget {
                                         'image is required to perform action');
                                 return;
                               }
-                              if (!state.sizes.contains(true)) {
+                              if (state.size == null) {
                                 showSnack(
                                     context: context,
                                     color: Colors.red,
                                     message: 'add size and try again');
-                                print(state.sizes.toString());
                                 return;
                               } else {
                                 formMap['size'] = state.size;
@@ -137,7 +134,7 @@ class ScreenAddInventory extends StatelessWidget {
                                     message: 'choose catogery and try again');
                                 return;
                               } else {
-                                formMap['category_id'] = 'Football';
+                                formMap['category_id'] = 1;
                                 // formMap['category_id'] = state.catogoryId;
                               }
                               formMap['product_name'] = context
@@ -284,7 +281,7 @@ class ImageShowContainer extends StatelessWidget {
             child: SizedBox(
                 width: double.infinity,
                 child: state.image != null
-                    ? Image.file(state.image!)
+                    ? Image.file(state.image!.fileImage)
                     : Image.network(manjestCity)),
           ),
         );
@@ -294,9 +291,8 @@ class ImageShowContainer extends StatelessWidget {
 }
 
 class SizeSelector extends StatelessWidget {
-  const SizeSelector({super.key, required this.size, required this.index});
+  const SizeSelector({super.key, required this.size});
   final String size;
-  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -306,19 +302,19 @@ class SizeSelector extends StatelessWidget {
           onTap: () {
             context
                 .read<AddInventoryBloc>()
-                .add(AddInventoryEvent.pickSize(index: index));
+                .add(AddInventoryEvent.pickSize(size: size));
           },
           child: Container(
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-                color: state.sizes[index] ? kBlack : kWhite,
+                color: state.size == size ? kBlack : kWhite,
                 borderRadius: const BorderRadius.all(kRadius5),
                 border: Border.all()),
             child: Text(
               ' $size ',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: state.sizes[index] ? kWhite : kBlack),
+                  color: state.size == size ? kWhite : kBlack),
             ),
           ),
         );
