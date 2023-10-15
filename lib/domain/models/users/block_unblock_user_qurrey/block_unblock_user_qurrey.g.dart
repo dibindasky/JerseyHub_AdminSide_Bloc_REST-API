@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'delete_inventory_qurrey.dart';
+part of 'block_unblock_user_qurrey.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-DeleteInventoryQurrey _$DeleteInventoryQurreyFromJson(
+BlockUnblockUserQurrey _$BlockUnblockUserQurreyFromJson(
         Map<String, dynamic> json) =>
-    DeleteInventoryQurrey(
-      id: json['id'] as int,
+    BlockUnblockUserQurrey(
+      id: json['id'] as int?,
     );
 
-Map<String, dynamic> _$DeleteInventoryQurreyToJson(
-        DeleteInventoryQurrey instance) =>
+Map<String, dynamic> _$BlockUnblockUserQurreyToJson(
+        BlockUnblockUserQurrey instance) =>
     <String, dynamic>{
       'id': instance.id,
     };

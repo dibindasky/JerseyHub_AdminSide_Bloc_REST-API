@@ -3,7 +3,7 @@ import 'dart:io';
 class AddInventoryModel {
   String catogoryId;
   String productName;
-  List<String>? sizes;
+  String size;
   String price;
   String stock;
   File image;
@@ -12,6 +12,6 @@ class AddInventoryModel {
       required this.productName,
       required this.image,
       required this.price,
-      this.sizes,
+      required this.size,
       required this.stock});
 }

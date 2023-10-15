@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jerseyhub_admin/application/business_logic/add_inventory/add_inventory_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/inventory/add_inventory/add_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {

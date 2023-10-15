@@ -3,11 +3,14 @@ import 'package:iconsax/iconsax.dart';
 import 'package:jerseyhub_admin/application/presentation/routes/routes.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
 
 class InventoryTile extends StatelessWidget {
   const InventoryTile({
-    super.key,
+    super.key,required this.inventory
   });
+
+  final Inventory inventory;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,8 @@ class InventoryTile extends StatelessWidget {
               decoration: const BoxDecoration(
                   color: kGrey, borderRadius: BorderRadius.all(kRadius10)),
               child: SizedBox(
-                  width: double.infinity, child: Image.network(manjestCity)),
+                  width: double.infinity,
+                  child: Image.network(inventory.image!)),
             ),
             Positioned(
               right: 5,
@@ -38,20 +42,20 @@ class InventoryTile extends StatelessWidget {
             ),
           ],
         ),
-        const Text('Manjester City'),
+        Text(inventory.productName!),
         Row(
           children: [
             Text(
-              '₹600',
+              '₹${inventory.discountedPrice}',
               style: priceStyle,
             ),
             kWidth10,
-            Text(
-              '₹1000',
+            inventory.price! != inventory.discountedPrice! ?Text(
+              '₹${inventory.price}',
               style: priceStyleCross,
-            ),
+            ):kEmpty,
             const Spacer(),
-            Container(
+            inventory.price! != inventory.discountedPrice! ? Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               decoration: const BoxDecoration(
                   color: kGreen, borderRadius: BorderRadius.all(kRadius5)),
@@ -59,7 +63,7 @@ class InventoryTile extends StatelessWidget {
                 '40% off',
                 style: TextStyle(color: kWhite),
               ),
-            )
+            ):kEmpty
           ],
         )
       ],

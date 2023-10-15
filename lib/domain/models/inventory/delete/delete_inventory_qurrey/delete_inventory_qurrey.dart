@@ -4,9 +4,9 @@ part 'delete_inventory_qurrey.g.dart';
 
 @JsonSerializable()
 class DeleteInventoryQurrey {
-  int? id;
+  int id;
 
-  DeleteInventoryQurrey({this.id});
+  DeleteInventoryQurrey({required this.id});
 
   factory DeleteInventoryQurrey.fromJson(Map<String, dynamic> json) {
     return _$DeleteInventoryQurreyFromJson(json);

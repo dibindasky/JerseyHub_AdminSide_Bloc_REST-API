@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'delete_inventory_qurrey.dart';
+part of 'delete_catogery_qurrey.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-DeleteInventoryQurrey _$DeleteInventoryQurreyFromJson(
+DeleteCatogeryQurrey _$DeleteCatogeryQurreyFromJson(
         Map<String, dynamic> json) =>
-    DeleteInventoryQurrey(
+    DeleteCatogeryQurrey(
       id: json['id'] as int,
     );
 
-Map<String, dynamic> _$DeleteInventoryQurreyToJson(
-        DeleteInventoryQurrey instance) =>
+Map<String, dynamic> _$DeleteCatogeryQurreyToJson(
+        DeleteCatogeryQurrey instance) =>
     <String, dynamic>{
       'id': instance.id,
     };

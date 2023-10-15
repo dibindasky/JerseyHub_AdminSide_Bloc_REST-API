@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:jerseyhub_admin/application/business_logic/add_inventory/add_inventory_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/inventory/add_inventory/add_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/loading_indicator/loading_indicator.dart';
@@ -32,7 +32,7 @@ class ScreenEditInventory extends StatelessWidget {
                   context: context,
                   builder: (context) => const Center(
                     child: LoadingAnimation(
-                      width: 0.70,
+                      width: 0.50,
                     ),
                   ),
                 );
