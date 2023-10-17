@@ -22,7 +22,7 @@ class ScreenHome extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Column(
+          const Column(
             children: [
               CoustomSearchField(),
               kHeight10,
@@ -38,7 +38,6 @@ class ScreenHome extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              print('in grid builder');
               if (state.isLoading) {
                 return const LoadingAnimation(width: 0.30);
               } else if (state.hasError) {
@@ -58,7 +57,9 @@ class ScreenHome extends StatelessWidget {
                             crossAxisCount: 2),
                     // itemCount: 10,
                     itemCount: state.getInventoryResponseModel!.data!.length,
-                    itemBuilder: (context, index) => InventoryTile(inventory:state.getInventoryResponseModel!.data![index]));
+                    itemBuilder: (context, index) => InventoryTile(
+                        inventory:
+                            state.getInventoryResponseModel!.data![index]));
               } else {
                 return const Center(child: Text('no data avaliable '));
               }

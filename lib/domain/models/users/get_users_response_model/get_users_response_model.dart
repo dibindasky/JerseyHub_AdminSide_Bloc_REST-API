@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'datum.dart';
+import 'user.dart';
 
 part 'get_users_response_model.g.dart';
 
@@ -9,13 +9,14 @@ class GetUsersResponseModel {
   @JsonKey(name: 'status_code')
   int? statusCode;
   String? message;
-  List<Datum>? data;
+  @JsonKey(name: 'data')
+  List<User>? users;
   dynamic error;
 
   GetUsersResponseModel({
     this.statusCode,
     this.message,
-    this.data,
+    this.users,
     this.error,
   });
 

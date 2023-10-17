@@ -125,7 +125,6 @@ class ScreenAddInventory extends StatelessWidget {
                                 return;
                               } else {
                                 formMap['size'] = state.size;
-                                print(state.size);
                               }
                               if (state.catogory == null) {
                                 showSnack(

@@ -3,7 +3,7 @@ part 'failures.freezed.dart';
 
 @freezed
 class Failure {
-  factory Failure.clientFailure() = _ClientFailure;
-  factory Failure.serverFailure() = _ServerFailure;
+  factory Failure.clientFailure({String? message}) = _ClientFailure;
+  factory Failure.serverFailure({String? message}) = _ServerFailure;
   factory Failure.tokenExpire() = _TokenExpire;
 }

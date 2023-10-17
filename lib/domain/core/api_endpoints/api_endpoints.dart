@@ -7,11 +7,13 @@ class ApiEndPoints {
   static String createCoupen = '/coupons/create';
   static String deleteCoupen = '/coupons/delete';
   static String inventory = '/inventories';
+  static String inventoryImage = '/inventories/:id/image';
+  static String inventoryStock = '/inventories/:id/stock';
   static String addOffer = '/offers/add';
   static String getOrders = '/orders';
   static String editOrderStatus = '/orders/edit/status';
   static String addPaymentMethod = '/payment/payment-method/new';
-  static String getUsers = '/users/getusers';
+  static String getUsers = '/users';
   static String blockUsers = '/users/block';
   static String unblockUsers = '/users/unblock';
 }

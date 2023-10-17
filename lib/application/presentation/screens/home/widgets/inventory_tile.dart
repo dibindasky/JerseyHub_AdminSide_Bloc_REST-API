@@ -6,9 +6,7 @@ import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
 
 class InventoryTile extends StatelessWidget {
-  const InventoryTile({
-    super.key,required this.inventory
-  });
+  const InventoryTile({super.key, required this.inventory});
 
   final Inventory inventory;
 
@@ -35,7 +33,8 @@ class InventoryTile extends StatelessWidget {
                 backgroundColor: kWhite,
                 child: IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.editScreen);
+                      Navigator.pushNamed(context, Routes.editScreen,
+                          arguments: inventory);
                     },
                     icon: const Icon(Iconsax.edit)),
               ),
@@ -50,20 +49,26 @@ class InventoryTile extends StatelessWidget {
               style: priceStyle,
             ),
             kWidth10,
-            inventory.price! != inventory.discountedPrice! ?Text(
-              '₹${inventory.price}',
-              style: priceStyleCross,
-            ):kEmpty,
+            inventory.price! != inventory.discountedPrice!
+                ? Text(
+                    '₹${inventory.price}',
+                    style: priceStyleCross,
+                  )
+                : kEmpty,
             const Spacer(),
-            inventory.price! != inventory.discountedPrice! ? Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: const BoxDecoration(
-                  color: kGreen, borderRadius: BorderRadius.all(kRadius5)),
-              child: const Text(
-                '40% off',
-                style: TextStyle(color: kWhite),
-              ),
-            ):kEmpty
+            inventory.price! != inventory.discountedPrice!
+                ? Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: const BoxDecoration(
+                        color: kGreen,
+                        borderRadius: BorderRadius.all(kRadius5)),
+                    child: const Text(
+                      '40% off',
+                      style: TextStyle(color: kWhite),
+                    ),
+                  )
+                : kEmpty
           ],
         )
       ],

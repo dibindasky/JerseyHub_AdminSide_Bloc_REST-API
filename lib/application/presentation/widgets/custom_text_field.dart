@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/inventory/add_inventory/add_inventory_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/inventory/edit_inventory/edit_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -34,7 +35,16 @@ class CustomTextFormField extends StatelessWidget {
                           .read<AddInventoryBloc>()
                           .productQuantityController ||
               context.read<AddInventoryBloc>().productQuantityController.text ==
-                  '0') {
+                  '0' ||
+              (controller ==
+                      context
+                          .read<EditInventoryBloc>()
+                          .stockUpdateController &&
+                  context
+                          .read<EditInventoryBloc>()
+                          .stockUpdateController
+                          .text ==
+                      '0')) {
             return 'Add field';
           }
           if (value.isEmpty) {

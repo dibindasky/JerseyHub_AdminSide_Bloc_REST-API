@@ -12,9 +12,9 @@ class Inventory {
   String? productName;
   String? size;
   int? stock;
-  int? price;
+  double? price;
   @JsonKey(name: 'discounted_price')
-  int? discountedPrice;
+  double? discountedPrice;
 
   Inventory({
     this.id,
@@ -27,7 +27,8 @@ class Inventory {
     this.discountedPrice,
   });
 
-  factory Inventory.fromJson(Map<String, dynamic> json) => _$InventoryFromJson(json);
+  factory Inventory.fromJson(Map<String, dynamic> json) =>
+      _$InventoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$InventoryToJson(this);
 }

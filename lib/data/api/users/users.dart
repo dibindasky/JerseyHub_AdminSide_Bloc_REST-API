@@ -23,7 +23,7 @@ class UsersApi implements UsersRepository {
       final response = await _dio.get(ApiEndPoints.getUsers,
           queryParameters: getUsersQurrey.toJson());
       if (response.statusCode == 200) {
-        return Right(GetUsersResponseModel());
+        return Right(GetUsersResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
@@ -45,7 +45,7 @@ class UsersApi implements UsersRepository {
       final response = await _dio.put(ApiEndPoints.blockUsers,
           queryParameters: blockUnblockUserQurrey.toJson());
       if (response.statusCode == 200) {
-        return Right(BlockUnlbockUserResponseModel());
+        return Right(BlockUnlbockUserResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
@@ -64,10 +64,10 @@ class UsersApi implements UsersRepository {
       _dio.options.headers['content-Type'] = 'application/json';
       _dio.options.headers['AccessToken'] = tokenModel.accessToken;
       _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.get(ApiEndPoints.unblockUsers,
+      final response = await _dio.put(ApiEndPoints.unblockUsers,
           queryParameters: blockUnblockUserQurrey.toJson());
       if (response.statusCode == 200) {
-        return Right(BlockUnlbockUserResponseModel());
+        return Right(BlockUnlbockUserResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {

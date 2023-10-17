@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'datum.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
+User _$UserFromJson(Map<String, dynamic> json) => User(
       id: json['id'] as int?,
       name: json['name'] as String?,
       email: json['email'] as String?,
@@ -14,7 +14,7 @@ Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
       blockStatus: json['block_status'] as bool?,
     );
 
-Map<String, dynamic> _$DatumToJson(Datum instance) => <String, dynamic>{
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'email': instance.email,

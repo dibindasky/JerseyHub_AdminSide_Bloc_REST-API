@@ -20,7 +20,6 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
   final TextEditingController productQuantityController =
       TextEditingController();
   final GlobalKey<FormState> inventoryKey = GlobalKey<FormState>();
-  final sizeList = ['S', 'M', 'L', 'XL', 'XXL'];
 
   AddInventoryBloc() : super(AddInventoryState.initial()) {
     on<_AddJersey>((event, emit) async {
@@ -67,7 +66,8 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
     });
 
     on<_AddImage>((event, emit) async {
-      emit(state.copyWith(image: await PickImage.getImageFromGallery()));
+      final image = await PickImage.getImageFromGallery();
+      emit(state.copyWith(image: image));
     });
   }
 }

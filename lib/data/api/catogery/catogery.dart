@@ -24,7 +24,7 @@ class CatogeryApi implements CatogeryRepository {
       final response = await _dio.post(ApiEndPoints.catogery,
           data: postCatogeryModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return Right(CatogeryResponseModel());
+        return Right(CatogeryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
@@ -46,7 +46,7 @@ class CatogeryApi implements CatogeryRepository {
       final response = await _dio.delete(ApiEndPoints.catogery,
           queryParameters: deleteCatogeryQurrey.toJson());
       if (response.statusCode == 200) {
-        return Right(CatogeryResponseModel());
+        return Right(CatogeryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
@@ -68,7 +68,7 @@ class CatogeryApi implements CatogeryRepository {
       final response = await _dio.put(ApiEndPoints.catogery,
           data: putCatogeryModel.toJson());
       if (response.statusCode == 200) {
-        return Right(CatogeryResponseModel());
+        return Right(CatogeryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
@@ -88,7 +88,7 @@ class CatogeryApi implements CatogeryRepository {
       _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
       final response = await _dio.get(ApiEndPoints.catogery);
       if (response.statusCode == 200) {
-        return Right(GetCatogereyResponseModel());
+        return Right(GetCatogereyResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
         return Left(Failure.serverFailure());
       } else {
