@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
       this.textAlign = TextAlign.start,
       required this.controller,
       this.color = kGrey,
+      this.textCapitalization = TextCapitalization.words,
       this.textInputType = TextInputType.number});
   final String hintText;
   final IconData? icon;
@@ -21,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final TextEditingController controller;
   final Color color;
+  final TextCapitalization textCapitalization;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,7 @@ class CustomTextFormField extends StatelessWidget {
               context.read<AddInventoryBloc>().productQuantityController.text ==
                   '0' ||
               (controller ==
-                      context
-                          .read<EditInventoryBloc>()
-                          .stockUpdateController &&
+                      context.read<EditInventoryBloc>().stockUpdateController &&
                   context
                           .read<EditInventoryBloc>()
                           .stockUpdateController
@@ -53,6 +53,7 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         },
         controller: controller,
+        textCapitalization: textCapitalization,
         textAlign: textAlign,
         keyboardType: textInputType,
         decoration: InputDecoration(

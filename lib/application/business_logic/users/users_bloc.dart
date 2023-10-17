@@ -22,7 +22,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
           getUsersQurrey: event.getUsersQurrey, tokenModel: tokenModel);
       result.fold((failure) {
         emit(state.copyWith(
-            isLoading: true,
+            isLoading: false,
             hasError: true,
             isBlocked: false,
             isUnBlocked: false,

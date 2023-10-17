@@ -94,12 +94,17 @@ class InventoryApi implements InventoryRepository {
       if (response.statusCode == 200) {
         return Right(UpdateInventoryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
-        return Left(Failure.serverFailure(message: UpdateInventoryResponseModel.fromJson(response.data).message!));
+        return Left(Failure.serverFailure(
+            message:
+                UpdateInventoryResponseModel.fromJson(response.data).message!));
       } else {
-        return Left(Failure.clientFailure(message: UpdateInventoryResponseModel.fromJson(response.data).message!));
+        return Left(Failure.clientFailure(
+            message:
+                UpdateInventoryResponseModel.fromJson(response.data).message!));
       }
     } catch (e) {
-      return Left(Failure.clientFailure(message: 'Something went wrong, can\'t connect to server'));
+      return Left(Failure.clientFailure(
+          message: 'Something went wrong, can\'t connect to server'));
     }
   }
 

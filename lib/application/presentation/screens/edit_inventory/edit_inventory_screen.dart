@@ -55,13 +55,15 @@ class ScreenEditInventory extends StatelessWidget {
                         decoration: const BoxDecoration(
                             color: kGrey,
                             borderRadius: BorderRadius.all(kRadius10)),
-                        child: state.isImageUploading?const LoadingAnimation(width: 0.15) :SizedBox(
-                            width: double.infinity,
-                            child: state.image != null
-                                ? Image.file(state.image!.fileImage)
-                                : state.networkImage == null
-                                    ? Image.network(inventory.image!)
-                                    : Image.network(state.networkImage!)),
+                        child: state.isImageUploading
+                            ? const LoadingAnimation(width: 0.15)
+                            : SizedBox(
+                                width: double.infinity,
+                                child: state.image != null
+                                    ? Image.file(state.image!.fileImage)
+                                    : state.networkImage == null
+                                        ? Image.network(inventory.image!)
+                                        : Image.network(state.networkImage!)),
                       );
                     },
                   ),

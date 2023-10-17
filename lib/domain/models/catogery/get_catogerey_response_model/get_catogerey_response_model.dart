@@ -1,6 +1,5 @@
+import 'package:jerseyhub_admin/domain/models/catogery/catogery_response_model/category.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'datum.dart';
 
 part 'get_catogerey_response_model.g.dart';
 
@@ -9,7 +8,7 @@ class GetCatogereyResponseModel {
   @JsonKey(name: 'status_code')
   int? statusCode;
   String? message;
-  List<Datum>? data;
+  List<Category>? data;
   dynamic error;
 
   GetCatogereyResponseModel({

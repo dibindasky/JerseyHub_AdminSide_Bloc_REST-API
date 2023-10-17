@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'catogery_response_model.dart';
+part of 'get_coupons_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CatogeryResponseModel _$CatogeryResponseModelFromJson(
+GetCouponsResponseModel _$GetCouponsResponseModelFromJson(
         Map<String, dynamic> json) =>
-    CatogeryResponseModel(
+    GetCouponsResponseModel(
       statusCode: json['status_code'] as int?,
       message: json['message'] as String?,
-      data: json['data'] == null
-          ? null
-          : Category.fromJson(json['data'] as Map<String, dynamic>),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => Coupon.fromJson(e as Map<String, dynamic>))
+          .toList(),
       error: json['error'],
     );
 
-Map<String, dynamic> _$CatogeryResponseModelToJson(
-        CatogeryResponseModel instance) =>
+Map<String, dynamic> _$GetCouponsResponseModelToJson(
+        GetCouponsResponseModel instance) =>
     <String, dynamic>{
       'status_code': instance.statusCode,
       'message': instance.message,

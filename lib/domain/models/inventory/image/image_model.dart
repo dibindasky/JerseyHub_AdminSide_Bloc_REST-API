@@ -6,5 +6,8 @@ class ImageModel {
   File fileImage;
   MultipartFile multipartFile;
   String? netWorkImage;
-  ImageModel({required this.fileImage, required this.multipartFile,this.netWorkImage});
+  ImageModel(
+      {required this.fileImage,
+      required this.multipartFile,
+      this.netWorkImage});
 }

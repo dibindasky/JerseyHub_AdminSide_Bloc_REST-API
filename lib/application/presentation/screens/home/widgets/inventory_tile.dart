@@ -41,20 +41,28 @@ class InventoryTile extends StatelessWidget {
             ),
           ],
         ),
-        Text(inventory.productName!),
+        Text(
+          inventory.productName!,
+          overflow: TextOverflow.ellipsis,
+        ),
+        kHeight5,
         Row(
           children: [
-            Text(
-              '₹${inventory.discountedPrice}',
-              style: priceStyle,
+            Column(
+              children: [
+                Text(
+                  '₹${inventory.discountedPrice}',
+                  style: priceStyle,
+                ),
+                kWidth10,
+                inventory.price! != inventory.discountedPrice!
+                    ? Text(
+                        '₹${inventory.price}',
+                        style: priceStyleCross,
+                      )
+                    : kEmpty,
+              ],
             ),
-            kWidth10,
-            inventory.price! != inventory.discountedPrice!
-                ? Text(
-                    '₹${inventory.price}',
-                    style: priceStyleCross,
-                  )
-                : kEmpty,
             const Spacer(),
             inventory.price! != inventory.discountedPrice!
                 ? Container(

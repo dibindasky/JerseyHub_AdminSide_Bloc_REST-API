@@ -8,7 +8,7 @@ class User {
   String? name;
   String? email;
   String? phone;
-  @JsonKey(name: 'block_status')
+  @JsonKey(name: 'blocked')
   bool? blockStatus;
 
   User({this.id, this.name, this.email, this.phone, this.blockStatus});

@@ -36,14 +36,17 @@ class ScreenAllUsers extends StatelessWidget {
             },
             builder: (context, state) {
               if (state.isLoading) {
-                return const LoadingAnimation(width: 0.40);
+                return const LoadingAnimation(width: 0.20);
               } else if (state.getUsersResponseModel != null &&
+                  state.getUsersResponseModel!.users != null &&
                   state.getUsersResponseModel!.users!.isNotEmpty) {
                 return ListView.separated(
                   shrinkWrap: true,
                   itemCount: state.getUsersResponseModel!.users!.length,
-                  itemBuilder: (context, index) => UserTile(
-                      user: state.getUsersResponseModel!.users![index]),
+                  itemBuilder: (context, index) {
+                    return UserTile(
+                        user: state.getUsersResponseModel!.users![index]);
+                  },
                   separatorBuilder: (context, index) => kHeight10,
                 );
               } else {

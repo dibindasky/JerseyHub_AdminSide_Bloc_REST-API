@@ -51,7 +51,7 @@ class ScreenHome extends StatelessWidget {
                     shrinkWrap: true,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 1 / 1.55,
+                            childAspectRatio: 1 / 1.6,
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 10,
                             crossAxisCount: 2),

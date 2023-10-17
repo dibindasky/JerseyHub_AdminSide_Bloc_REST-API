@@ -20,9 +20,13 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
       TextEditingController(text: '0');
   final GlobalKey<FormState> stockFormKey = GlobalKey<FormState>();
   EditInventoryBloc() : super(EditInventoryState.initial()) {
-
     on<_SetStock>((event, emit) {
-      emit(state.copyWith(stock: event.stock,isUpdated: false,hasError: false, isDeleted: false,networkImage: event.image));
+      emit(state.copyWith(
+          stock: event.stock,
+          isUpdated: false,
+          hasError: false,
+          isDeleted: false,
+          networkImage: event.image));
     });
 
     on<_AddStock>((event, emit) async {
@@ -33,7 +37,8 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
       result.fold(
         (failure) => emit(
           state.copyWith(
-              isLoading: false,isUpdated: false,
+              isLoading: false,
+              isUpdated: false,
               hasError: true,
               isDeleted: false,
               message: 'something went wrong, please try again'),
@@ -42,7 +47,8 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
           stockUpdateController.text = '0';
           emit(
             state.copyWith(
-                isLoading: false,isUpdated: false,
+                isLoading: false,
+                isUpdated: false,
                 hasError: false,
                 isDeleted: false,
                 stock: updateInventoryResponseModel.data!.stock!,
@@ -80,20 +86,26 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
 
     on<_UpdateImage>((event, emit) async {
       final image = await PickImage.getImageFromGallery();
-      if(image == null)return;
+      if (image == null) return;
       emit(state.copyWith(isImageUploading: true));
-      Map<String,dynamic> imageMap={"image":image.multipartFile};
+      Map<String, dynamic> imageMap = {"image": image.multipartFile};
       final tokens = await SharedPref.getToken();
       final result = await inventoryApi.updateImageInventory(
           tokenModel: tokens,
           formData: FormData.fromMap(imageMap),
           updateInventoryImageQurrey: event.updateInventoryImageQurrey);
       result.fold(
-          (failure) => emit(
-              state.copyWith(hasError: true, message: 'can\'t update image',isImageUploading: false)),
-          (getInventoryImageResponse) {
-            emit(state.copyWith(hasError: false,isImageUploading: false, message: 'image updated sussfully',isUpdated: true,image: image));
-          });
+          (failure) => emit(state.copyWith(
+              hasError: true,
+              message: 'can\'t update image',
+              isImageUploading: false)), (getInventoryImageResponse) {
+        emit(state.copyWith(
+            hasError: false,
+            isImageUploading: false,
+            message: 'image updated sussfully',
+            isUpdated: true,
+            image: image));
+      });
     });
 
     on<_IncrementQuantity>((event, emit) {

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-class UpdateInventoryImageModel{
+class UpdateInventoryImageModel {
   File image;
   UpdateInventoryImageModel({required this.image});
 }
