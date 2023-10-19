@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/Auth/auth_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/category/category_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/coupon/coupon_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/inventory/add_inventory/add_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/bottom_bar_cubit/bottom_bar_cubit_cubit.dart';
 import 'package:jerseyhub_admin/application/business_logic/inventory/edit_inventory/edit_inventory_bloc.dart';
@@ -44,6 +45,9 @@ class JerseyHubUser extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CategoryBloc(),
+        ),
+        BlocProvider(
+          create: (context) => CouponBloc(),
         ),
       ],
       child: MaterialApp(

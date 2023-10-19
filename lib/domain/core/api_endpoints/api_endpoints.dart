@@ -4,12 +4,11 @@ class ApiEndPoints {
 
   static String signIn = '/adminlogin';
   static String catogery = '/category';
-  static String createCoupen = '/coupons/create';
-  static String deleteCoupen = '/coupons/delete';
+  static String coupon = '/coupons';
   static String inventory = '/inventories';
   static String inventoryImage = '/inventories/:id/image';
   static String inventoryStock = '/inventories/:id/stock';
-  static String addOffer = '/offers/add';
+  static String offer = '/offers';
   static String getOrders = '/orders';
   static String editOrderStatus = '/orders/edit/status';
   static String addPaymentMethod = '/payment/payment-method/new';
