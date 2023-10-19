@@ -14,7 +14,7 @@ class OfferApi implements OfferRepository {
 
   @override
   Future<Either<Failure, OfferResponseModel>> addOffer(
-      {required AddOfferModel addCouponModel,
+      {required AddOfferModel addOfferModel,
       required TokenModel tokenModel}) async {
     try {
       _dio.options.headers['content-Type'] = 'application/json';

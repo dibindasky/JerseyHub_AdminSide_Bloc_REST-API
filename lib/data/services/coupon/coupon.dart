@@ -78,12 +78,15 @@ class CouponApi implements CouponRepository {
   }
 
   @override
-  Future<Either<Failure, CoupenResponseModel>> activateCoupon({required TokenModel tokenModel, required CouponActivateQurrey couponActivateQurrey}) async {
+  Future<Either<Failure, CoupenResponseModel>> activateCoupon(
+      {required TokenModel tokenModel,
+      required CouponActivateQurrey couponActivateQurrey}) async {
     try {
       _dio.options.headers['content-Type'] = 'application/json';
       _dio.options.headers['AccessToken'] = tokenModel.accessToken;
       _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.coupon);
+      final response = await _dio.put(ApiEndPoints.coupon,
+          queryParameters: couponActivateQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(CoupenResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

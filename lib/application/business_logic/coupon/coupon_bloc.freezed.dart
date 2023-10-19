@@ -21,29 +21,26 @@ mixin _$CouponEvent {
     required TResult Function() getCoupon,
     required TResult Function(AddCouponModel addCouponModel) addCoupon,
     required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
+        deleteCoupon,
     required TResult Function(CouponActivateQurrey couponActivateQurrey)
         activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCoupon,
     TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult? Function(CouponActivateQurrey couponActivateQurrey)?
         activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCoupon,
     TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,27 +48,24 @@ mixin _$CouponEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupon value) getCoupon,
     required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
+    required TResult Function(_DeleteCoupon value) deleteCoupon,
     required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupon value)? getCoupon,
     TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult? Function(_DeleteCoupon value)? deleteCoupon,
     TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupon value)? getCoupon,
     TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult Function(_DeleteCoupon value)? deleteCoupon,
     TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,10 +130,9 @@ class _$GetCouponImpl implements _GetCoupon {
     required TResult Function() getCoupon,
     required TResult Function(AddCouponModel addCouponModel) addCoupon,
     required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
+        deleteCoupon,
     required TResult Function(CouponActivateQurrey couponActivateQurrey)
         activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
   }) {
     return getCoupon();
   }
@@ -149,10 +142,9 @@ class _$GetCouponImpl implements _GetCoupon {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCoupon,
     TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult? Function(CouponActivateQurrey couponActivateQurrey)?
         activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
   }) {
     return getCoupon?.call();
   }
@@ -162,9 +154,8 @@ class _$GetCouponImpl implements _GetCoupon {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCoupon,
     TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
     required TResult orElse(),
   }) {
     if (getCoupon != null) {
@@ -178,9 +169,8 @@ class _$GetCouponImpl implements _GetCoupon {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupon value) getCoupon,
     required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
+    required TResult Function(_DeleteCoupon value) deleteCoupon,
     required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
   }) {
     return getCoupon(this);
   }
@@ -190,9 +180,8 @@ class _$GetCouponImpl implements _GetCoupon {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupon value)? getCoupon,
     TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult? Function(_DeleteCoupon value)? deleteCoupon,
     TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
   }) {
     return getCoupon?.call(this);
   }
@@ -202,9 +191,8 @@ class _$GetCouponImpl implements _GetCoupon {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupon value)? getCoupon,
     TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult Function(_DeleteCoupon value)? deleteCoupon,
     TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
     required TResult orElse(),
   }) {
     if (getCoupon != null) {
@@ -286,10 +274,9 @@ class _$AddCouponImpl implements _AddCoupon {
     required TResult Function() getCoupon,
     required TResult Function(AddCouponModel addCouponModel) addCoupon,
     required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
+        deleteCoupon,
     required TResult Function(CouponActivateQurrey couponActivateQurrey)
         activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
   }) {
     return addCoupon(addCouponModel);
   }
@@ -299,10 +286,9 @@ class _$AddCouponImpl implements _AddCoupon {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCoupon,
     TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult? Function(CouponActivateQurrey couponActivateQurrey)?
         activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
   }) {
     return addCoupon?.call(addCouponModel);
   }
@@ -312,9 +298,8 @@ class _$AddCouponImpl implements _AddCoupon {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCoupon,
     TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
     required TResult orElse(),
   }) {
     if (addCoupon != null) {
@@ -328,9 +313,8 @@ class _$AddCouponImpl implements _AddCoupon {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupon value) getCoupon,
     required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
+    required TResult Function(_DeleteCoupon value) deleteCoupon,
     required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
   }) {
     return addCoupon(this);
   }
@@ -340,9 +324,8 @@ class _$AddCouponImpl implements _AddCoupon {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupon value)? getCoupon,
     TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult? Function(_DeleteCoupon value)? deleteCoupon,
     TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
   }) {
     return addCoupon?.call(this);
   }
@@ -352,9 +335,8 @@ class _$AddCouponImpl implements _AddCoupon {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupon value)? getCoupon,
     TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult Function(_DeleteCoupon value)? deleteCoupon,
     TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
     required TResult orElse(),
   }) {
     if (addCoupon != null) {
@@ -415,7 +397,7 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
 
   @override
   String toString() {
-    return 'CouponEvent.deactivateCoupon(deleteCoupenQurrey: $deleteCoupenQurrey)';
+    return 'CouponEvent.deleteCoupon(deleteCoupenQurrey: $deleteCoupenQurrey)';
   }
 
   @override
@@ -442,12 +424,11 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
     required TResult Function() getCoupon,
     required TResult Function(AddCouponModel addCouponModel) addCoupon,
     required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
+        deleteCoupon,
     required TResult Function(CouponActivateQurrey couponActivateQurrey)
         activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
   }) {
-    return deactivateCoupon(deleteCoupenQurrey);
+    return deleteCoupon(deleteCoupenQurrey);
   }
 
   @override
@@ -455,12 +436,11 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCoupon,
     TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult? Function(CouponActivateQurrey couponActivateQurrey)?
         activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
   }) {
-    return deactivateCoupon?.call(deleteCoupenQurrey);
+    return deleteCoupon?.call(deleteCoupenQurrey);
   }
 
   @override
@@ -468,13 +448,12 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCoupon,
     TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
     required TResult orElse(),
   }) {
-    if (deactivateCoupon != null) {
-      return deactivateCoupon(deleteCoupenQurrey);
+    if (deleteCoupon != null) {
+      return deleteCoupon(deleteCoupenQurrey);
     }
     return orElse();
   }
@@ -484,11 +463,10 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupon value) getCoupon,
     required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
+    required TResult Function(_DeleteCoupon value) deleteCoupon,
     required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
   }) {
-    return deactivateCoupon(this);
+    return deleteCoupon(this);
   }
 
   @override
@@ -496,11 +474,10 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupon value)? getCoupon,
     TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult? Function(_DeleteCoupon value)? deleteCoupon,
     TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
   }) {
-    return deactivateCoupon?.call(this);
+    return deleteCoupon?.call(this);
   }
 
   @override
@@ -508,13 +485,12 @@ class _$DeleteCouponImpl implements _DeleteCoupon {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupon value)? getCoupon,
     TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult Function(_DeleteCoupon value)? deleteCoupon,
     TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
     required TResult orElse(),
   }) {
-    if (deactivateCoupon != null) {
-      return deactivateCoupon(this);
+    if (deleteCoupon != null) {
+      return deleteCoupon(this);
     }
     return orElse();
   }
@@ -600,10 +576,9 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
     required TResult Function() getCoupon,
     required TResult Function(AddCouponModel addCouponModel) addCoupon,
     required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
+        deleteCoupon,
     required TResult Function(CouponActivateQurrey couponActivateQurrey)
         activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
   }) {
     return activateCoupon(couponActivateQurrey);
   }
@@ -613,10 +588,9 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getCoupon,
     TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult? Function(CouponActivateQurrey couponActivateQurrey)?
         activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
   }) {
     return activateCoupon?.call(couponActivateQurrey);
   }
@@ -626,9 +600,8 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getCoupon,
     TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
+    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deleteCoupon,
     TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
     required TResult orElse(),
   }) {
     if (activateCoupon != null) {
@@ -642,9 +615,8 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetCoupon value) getCoupon,
     required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
+    required TResult Function(_DeleteCoupon value) deleteCoupon,
     required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
   }) {
     return activateCoupon(this);
   }
@@ -654,9 +626,8 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetCoupon value)? getCoupon,
     TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult? Function(_DeleteCoupon value)? deleteCoupon,
     TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
   }) {
     return activateCoupon?.call(this);
   }
@@ -666,9 +637,8 @@ class _$ActivateCouponImpl implements _ActivateCoupon {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetCoupon value)? getCoupon,
     TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
+    TResult Function(_DeleteCoupon value)? deleteCoupon,
     TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
     required TResult orElse(),
   }) {
     if (activateCoupon != null) {
@@ -686,160 +656,6 @@ abstract class _ActivateCoupon implements CouponEvent {
   CouponActivateQurrey get couponActivateQurrey;
   @JsonKey(ignore: true)
   _$$ActivateCouponImplCopyWith<_$ActivateCouponImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TapEditImplCopyWith<$Res> {
-  factory _$$TapEditImplCopyWith(
-          _$TapEditImpl value, $Res Function(_$TapEditImpl) then) =
-      __$$TapEditImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Coupon coupon});
-}
-
-/// @nodoc
-class __$$TapEditImplCopyWithImpl<$Res>
-    extends _$CouponEventCopyWithImpl<$Res, _$TapEditImpl>
-    implements _$$TapEditImplCopyWith<$Res> {
-  __$$TapEditImplCopyWithImpl(
-      _$TapEditImpl _value, $Res Function(_$TapEditImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? coupon = null,
-  }) {
-    return _then(_$TapEditImpl(
-      coupon: null == coupon
-          ? _value.coupon
-          : coupon // ignore: cast_nullable_to_non_nullable
-              as Coupon,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TapEditImpl implements _TapEdit {
-  const _$TapEditImpl({required this.coupon});
-
-  @override
-  final Coupon coupon;
-
-  @override
-  String toString() {
-    return 'CouponEvent.tapEdit(coupon: $coupon)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TapEditImpl &&
-            (identical(other.coupon, coupon) || other.coupon == coupon));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, coupon);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TapEditImplCopyWith<_$TapEditImpl> get copyWith =>
-      __$$TapEditImplCopyWithImpl<_$TapEditImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getCoupon,
-    required TResult Function(AddCouponModel addCouponModel) addCoupon,
-    required TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)
-        deactivateCoupon,
-    required TResult Function(CouponActivateQurrey couponActivateQurrey)
-        activateCoupon,
-    required TResult Function(Coupon coupon) tapEdit,
-  }) {
-    return tapEdit(coupon);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getCoupon,
-    TResult? Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult? Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
-    TResult? Function(CouponActivateQurrey couponActivateQurrey)?
-        activateCoupon,
-    TResult? Function(Coupon coupon)? tapEdit,
-  }) {
-    return tapEdit?.call(coupon);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getCoupon,
-    TResult Function(AddCouponModel addCouponModel)? addCoupon,
-    TResult Function(DeleteCoupenQurrey deleteCoupenQurrey)? deactivateCoupon,
-    TResult Function(CouponActivateQurrey couponActivateQurrey)? activateCoupon,
-    TResult Function(Coupon coupon)? tapEdit,
-    required TResult orElse(),
-  }) {
-    if (tapEdit != null) {
-      return tapEdit(coupon);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetCoupon value) getCoupon,
-    required TResult Function(_AddCoupon value) addCoupon,
-    required TResult Function(_DeleteCoupon value) deactivateCoupon,
-    required TResult Function(_ActivateCoupon value) activateCoupon,
-    required TResult Function(_TapEdit value) tapEdit,
-  }) {
-    return tapEdit(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCoupon value)? getCoupon,
-    TResult? Function(_AddCoupon value)? addCoupon,
-    TResult? Function(_DeleteCoupon value)? deactivateCoupon,
-    TResult? Function(_ActivateCoupon value)? activateCoupon,
-    TResult? Function(_TapEdit value)? tapEdit,
-  }) {
-    return tapEdit?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCoupon value)? getCoupon,
-    TResult Function(_AddCoupon value)? addCoupon,
-    TResult Function(_DeleteCoupon value)? deactivateCoupon,
-    TResult Function(_ActivateCoupon value)? activateCoupon,
-    TResult Function(_TapEdit value)? tapEdit,
-    required TResult orElse(),
-  }) {
-    if (tapEdit != null) {
-      return tapEdit(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TapEdit implements CouponEvent {
-  const factory _TapEdit({required final Coupon coupon}) = _$TapEditImpl;
-
-  Coupon get coupon;
-  @JsonKey(ignore: true)
-  _$$TapEditImplCopyWith<_$TapEditImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

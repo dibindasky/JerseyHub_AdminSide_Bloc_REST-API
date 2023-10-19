@@ -12,6 +12,9 @@ class CouponListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<CouponBloc>().add(const CouponEvent.getCoupon());
+    });
     return Expanded(
       child: BlocConsumer<CouponBloc, CouponState>(
         listener: (context, state) {
@@ -26,7 +29,7 @@ class CouponListView extends StatelessWidget {
             previous.getCouponResponseModel != current.getCouponResponseModel,
         builder: (context, state) {
           if (state.getCouponResponseModel == null) {
-            const Center(
+            return const Center(
               child: Text('nothing to show'),
             );
           }
@@ -34,12 +37,10 @@ class CouponListView extends StatelessWidget {
           return ListView.builder(
               itemCount: couponList!.length,
               itemBuilder: (context, index) => OfferCouponCard(
-                    amount: couponList[index].discountRate!,
-                    name: couponList[index].coupon!,
+                    coupon: couponList[index],
                   ));
         },
       ),
     );
   }
 }
-

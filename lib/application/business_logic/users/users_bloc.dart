@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/api/users/users.dart';
+import 'package:jerseyhub_admin/data/services/users/users.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/users/block_unblock_user_qurrey/block_unblock_user_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/users/get_users_qurrey/get_users_qurrey.dart';

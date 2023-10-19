@@ -20,7 +20,8 @@ mixin _$AddInventoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -30,7 +31,7 @@ mixin _$AddInventoryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -40,7 +41,7 @@ mixin _$AddInventoryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
@@ -138,7 +139,8 @@ class _$AddImageImpl implements _AddImage {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -151,7 +153,7 @@ class _$AddImageImpl implements _AddImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -164,7 +166,7 @@ class _$AddImageImpl implements _AddImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
@@ -290,7 +292,8 @@ class _$PickSizeImpl implements _PickSize {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -303,7 +306,7 @@ class _$PickSizeImpl implements _PickSize {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -316,7 +319,7 @@ class _$PickSizeImpl implements _PickSize {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
@@ -387,7 +390,7 @@ abstract class _$$SelectCatogoryImplCopyWith<$Res> {
           $Res Function(_$SelectCatogoryImpl) then) =
       __$$SelectCatogoryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String selectedCatogory});
+  $Res call({int selectedCatogory, String catogory});
 }
 
 /// @nodoc
@@ -402,11 +405,16 @@ class __$$SelectCatogoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectedCatogory = null,
+    Object? catogory = null,
   }) {
     return _then(_$SelectCatogoryImpl(
       selectedCatogory: null == selectedCatogory
           ? _value.selectedCatogory
           : selectedCatogory // ignore: cast_nullable_to_non_nullable
+              as int,
+      catogory: null == catogory
+          ? _value.catogory
+          : catogory // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -415,14 +423,17 @@ class __$$SelectCatogoryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectCatogoryImpl implements _SelectCatogory {
-  const _$SelectCatogoryImpl({required this.selectedCatogory});
+  const _$SelectCatogoryImpl(
+      {required this.selectedCatogory, required this.catogory});
 
   @override
-  final String selectedCatogory;
+  final int selectedCatogory;
+  @override
+  final String catogory;
 
   @override
   String toString() {
-    return 'AddInventoryEvent.selectCatogory(selectedCatogory: $selectedCatogory)';
+    return 'AddInventoryEvent.selectCatogory(selectedCatogory: $selectedCatogory, catogory: $catogory)';
   }
 
   @override
@@ -431,11 +442,13 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
         (other.runtimeType == runtimeType &&
             other is _$SelectCatogoryImpl &&
             (identical(other.selectedCatogory, selectedCatogory) ||
-                other.selectedCatogory == selectedCatogory));
+                other.selectedCatogory == selectedCatogory) &&
+            (identical(other.catogory, catogory) ||
+                other.catogory == catogory));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedCatogory);
+  int get hashCode => Object.hash(runtimeType, selectedCatogory, catogory);
 
   @JsonKey(ignore: true)
   @override
@@ -449,12 +462,13 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
   }) {
-    return selectCatogory(selectedCatogory);
+    return selectCatogory(selectedCatogory, catogory);
   }
 
   @override
@@ -462,12 +476,12 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
   }) {
-    return selectCatogory?.call(selectedCatogory);
+    return selectCatogory?.call(selectedCatogory, catogory);
   }
 
   @override
@@ -475,14 +489,14 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
     required TResult orElse(),
   }) {
     if (selectCatogory != null) {
-      return selectCatogory(selectedCatogory);
+      return selectCatogory(selectedCatogory, catogory);
     }
     return orElse();
   }
@@ -532,10 +546,12 @@ class _$SelectCatogoryImpl implements _SelectCatogory {
 }
 
 abstract class _SelectCatogory implements AddInventoryEvent {
-  const factory _SelectCatogory({required final String selectedCatogory}) =
-      _$SelectCatogoryImpl;
+  const factory _SelectCatogory(
+      {required final int selectedCatogory,
+      required final String catogory}) = _$SelectCatogoryImpl;
 
-  String get selectedCatogory;
+  int get selectedCatogory;
+  String get catogory;
   @JsonKey(ignore: true)
   _$$SelectCatogoryImplCopyWith<_$SelectCatogoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -581,7 +597,8 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -594,7 +611,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -607,7 +624,7 @@ class _$IncrementQuantityImpl implements _IncrementQuantity {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
@@ -707,7 +724,8 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -720,7 +738,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -733,7 +751,7 @@ class _$DecrementQuantityImpl implements _DecrementQuantity {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,
@@ -860,7 +878,8 @@ class _$AddJerseyImpl implements _AddJersey {
   TResult when<TResult extends Object?>({
     required TResult Function() addImage,
     required TResult Function(String size) pickSize,
-    required TResult Function(String selectedCatogory) selectCatogory,
+    required TResult Function(int selectedCatogory, String catogory)
+        selectCatogory,
     required TResult Function() incrementQuantity,
     required TResult Function() decrementQuantity,
     required TResult Function(FormData formData) addJersey,
@@ -873,7 +892,7 @@ class _$AddJerseyImpl implements _AddJersey {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? addImage,
     TResult? Function(String size)? pickSize,
-    TResult? Function(String selectedCatogory)? selectCatogory,
+    TResult? Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult? Function()? incrementQuantity,
     TResult? Function()? decrementQuantity,
     TResult? Function(FormData formData)? addJersey,
@@ -886,7 +905,7 @@ class _$AddJerseyImpl implements _AddJersey {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? addImage,
     TResult Function(String size)? pickSize,
-    TResult Function(String selectedCatogory)? selectCatogory,
+    TResult Function(int selectedCatogory, String catogory)? selectCatogory,
     TResult Function()? incrementQuantity,
     TResult Function()? decrementQuantity,
     TResult Function(FormData formData)? addJersey,

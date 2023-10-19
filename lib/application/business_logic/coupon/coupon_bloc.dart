@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/api/coupon/coupon.dart';
+import 'package:jerseyhub_admin/data/services/coupon/coupon.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/add_coupon_model/add_coupon_model.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
@@ -31,8 +31,8 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
               message: 'something went wrong please try again')),
           (couponResponseModel) {
         emit(state.copyWith(isDone: true, message: 'Coupon added sussfully'));
-        couponAmountController.text='';
-        couponNameController.text='';
+        couponAmountController.text = '';
+        couponNameController.text = '';
         add(const CouponEvent.getCoupon());
       });
     });

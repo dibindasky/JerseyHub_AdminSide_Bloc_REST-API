@@ -2,14 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:jerseyhub_admin/application/business_logic/category/category_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/inventory/add_inventory/add_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/loading_indicator/loading_indicator.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/snack_show/snack_bar.dart';
 import 'package:jerseyhub_admin/application/presentation/widgets/custom_text_field.dart';
-
-const List<String> catogeryItems = ['Football', 'Cricket', 'Basketball'];
 
 class ScreenAddInventory extends StatelessWidget {
   const ScreenAddInventory({super.key});
@@ -126,15 +125,14 @@ class ScreenAddInventory extends StatelessWidget {
                               } else {
                                 formMap['size'] = state.size;
                               }
-                              if (state.catogory == null) {
+                              if (state.catogoryId == null) {
                                 showSnack(
                                     context: context,
                                     color: Colors.red,
                                     message: 'choose catogery and try again');
                                 return;
                               } else {
-                                formMap['category_id'] = 1;
-                                // formMap['category_id'] = state.catogoryId;
+                                formMap['category_id'] = state.catogoryId;
                               }
                               formMap['product_name'] = context
                                   .read<AddInventoryBloc>()
@@ -182,6 +180,9 @@ class CategoryAdder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<CategoryBloc>().add(const CategoryEvent.getCaegory());
+    });
     return BlocBuilder<AddInventoryBloc, AddInventoryState>(
       builder: (context, state) {
         return Row(
@@ -191,8 +192,11 @@ class CategoryAdder extends StatelessWidget {
             DropdownButton(
               value: state.catogory,
               borderRadius: const BorderRadius.all(kRadius20),
-              items:
-                  catogeryItems.map<DropdownMenuItem<String>>((String value) {
+              items: context
+                  .read<CategoryBloc>()
+                  .catogoryMap
+                  .keys
+                  .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -201,7 +205,10 @@ class CategoryAdder extends StatelessWidget {
               onChanged: (selectedCatogory) {
                 context.read<AddInventoryBloc>().add(
                     AddInventoryEvent.selectCatogory(
-                        selectedCatogory: selectedCatogory!));
+                        selectedCatogory: context
+                            .read<CategoryBloc>()
+                            .catogoryMap[selectedCatogory]!,
+                        catogory: selectedCatogory!));
               },
               hint: Text(
                 'Catogery ',

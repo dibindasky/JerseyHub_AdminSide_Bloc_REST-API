@@ -8,7 +8,7 @@ import 'package:jerseyhub_admin/domain/models/token/token.dart';
 
 abstract class OfferRepository {
   Future<Either<Failure, OfferResponseModel>> addOffer(
-      {required AddOfferModel addCouponModel, required TokenModel tokenModel});
+      {required AddOfferModel addOfferModel, required TokenModel tokenModel});
   Future<Either<Failure, GetOfferResponseModel>> getOffer(
       {required TokenModel tokenModel});
   Future<Either<Failure, OfferResponseModel>> deleteOffer(

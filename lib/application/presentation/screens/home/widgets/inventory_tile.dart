@@ -71,9 +71,9 @@ class InventoryTile extends StatelessWidget {
                     decoration: const BoxDecoration(
                         color: kGreen,
                         borderRadius: BorderRadius.all(kRadius5)),
-                    child: const Text(
-                      '40% off',
-                      style: TextStyle(color: kWhite),
+                    child: Text(
+                      '${(100 - (inventory.discountedPrice! / inventory.price!) * 100).round()}% off',
+                      style: const TextStyle(color: kWhite),
                     ),
                   )
                 : kEmpty

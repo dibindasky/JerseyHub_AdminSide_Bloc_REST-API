@@ -2,9 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/application/presentation/screens/inventory/add_inventory_screen.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/image_picker/image_picker.dart';
-import 'package:jerseyhub_admin/data/api/inventry/inventory.dart';
+import 'package:jerseyhub_admin/data/services/inventry/inventory.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/add/add_inventory_response_model/add_inventory_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
@@ -56,9 +55,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
     });
 
     on<_SelectCatogory>((event, emit) {
-      int id = catogeryItems
-          .indexWhere((element) => element == event.selectedCatogory);
-      emit(state.copyWith(catogory: event.selectedCatogory, catogoryId: id));
+      emit(state.copyWith(catogoryId: event.selectedCatogory, catogory: event.catogory));
     });
 
     on<_PickSize>((event, emit) async {

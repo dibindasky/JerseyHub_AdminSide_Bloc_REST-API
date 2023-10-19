@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/api/catogery/catogery.dart';
+import 'package:jerseyhub_admin/data/services/catogery/catogery.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/delete_catogery_qurrey/delete_catogery_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/get_catogerey_response_model/get_catogerey_response_model.dart';
@@ -15,6 +15,7 @@ part 'category_bloc.freezed.dart';
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final TextEditingController categoryController = TextEditingController();
   final GlobalKey<FormState> categoryKey = GlobalKey<FormState>();
+  final Map<String,int> catogoryMap={};
 
   final CatogeryApi catogeryApi = CatogeryApi();
   String? currentCategory;
@@ -32,6 +33,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
               isupdating: false,
               message: null)), (getCatogereyResponseModel) {
         categoryController.text = '';
+        for(var cat in getCatogereyResponseModel.data!){
+          catogoryMap[cat.category!]=cat.id!;
+        }
         emit(state.copyWith(
             isLoading: false,
             isAdding: false,
