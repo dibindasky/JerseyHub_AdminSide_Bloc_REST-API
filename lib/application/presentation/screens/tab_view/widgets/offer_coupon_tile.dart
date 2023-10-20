@@ -28,7 +28,8 @@ class OfferCouponCard extends StatelessWidget {
       name = coupon!.coupon!;
       amount = coupon!.discountRate!;
     } else {
-      name = offer!.categoryId!.toString();
+      // name = offer!.categoryId!.toString();
+      name = 'Football';
       amount = offer!.discountRate!;
     }
     return SizedBox(

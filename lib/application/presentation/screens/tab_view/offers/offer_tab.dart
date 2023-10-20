@@ -18,4 +18,3 @@ class OffersTab extends StatelessWidget {
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jerseyhub_admin/application/presentation/screens/api_test_page.dart/api_test.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/bottom_bar/bottom_bar_screen.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/edit_inventory/edit_inventory_screen.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
@@ -25,9 +24,6 @@ class RouteGenerator {
         } else {
           return _errorScreen();
         }
-
-      case Routes.testScreen:
-        return MaterialPageRoute(builder: (ctx) => ApiTestScreen());
       default:
         return _errorScreen();
     }

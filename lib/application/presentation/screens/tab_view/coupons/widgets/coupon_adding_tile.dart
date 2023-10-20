@@ -46,7 +46,7 @@ class CouponAddingTile extends StatelessWidget {
               const Text('Discount Persentage'),
               CustomTextFormField(
                 color: kWhite,
-                hintText: 'amount',
+                hintText: 'persentage',
                 controller: context.read<CouponBloc>().couponAmountController,
                 width: sWidth * 0.50,
               ),
@@ -54,6 +54,7 @@ class CouponAddingTile extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: TextButton.icon(
                   onPressed: () {
+                    FocusScope.of(context).unfocus();
                     context.read<CouponBloc>().add(CouponEvent.addCoupon(
                         addCouponModel: AddCouponModel(
                             coupon: context

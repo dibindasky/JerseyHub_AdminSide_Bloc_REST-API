@@ -20,7 +20,8 @@ class OfferApi implements OfferRepository {
       _dio.options.headers['content-Type'] = 'application/json';
       _dio.options.headers['AccessToken'] = tokenModel.accessToken;
       _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.post(ApiEndPoints.offer);
+      final response =
+          await _dio.post(ApiEndPoints.offer, data: addOfferModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(OfferResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

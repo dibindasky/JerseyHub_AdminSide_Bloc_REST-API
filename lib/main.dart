@@ -14,11 +14,11 @@ import 'application/presentation/routes/routes.dart';
 import 'application/presentation/routes/routes_generator.dart';
 
 void main() {
-  runApp(JerseyHubUser());
+  runApp(JerseyHubAdmin());
 }
 
-class JerseyHubUser extends StatelessWidget {
-  JerseyHubUser({super.key});
+class JerseyHubAdmin extends StatelessWidget {
+  JerseyHubAdmin({super.key});
 
   final RouteGenerator routeGenerator = RouteGenerator();
 

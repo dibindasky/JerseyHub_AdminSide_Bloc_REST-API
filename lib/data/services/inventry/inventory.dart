@@ -7,6 +7,9 @@ import 'package:jerseyhub_admin/domain/models/inventory/delete/delete_inventory_
 import 'package:jerseyhub_admin/domain/models/inventory/delete/delete_inventory_response_model/delete_inventory_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/get_inventory_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_response_qurrey/get_response_qurrey.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/update/edit_inventoru_details_model/edit_inventoru_details_model.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/update/edit_inventory_details_qurrey/edit_inventory_details_qurrey.dart';
+import 'package:jerseyhub_admin/domain/models/inventory/update/edit_inventory_response_model/edit_inventory_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_qurrey/update_inventory_image_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_response/update_inventory_image_response.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_model/update_inventory_model.dart';
@@ -129,6 +132,30 @@ class InventoryApi implements InventoryRepository {
         return Left(Failure.clientFailure(
             message:
                 UpdateInventoryImageResponse.fromJson(response.data).message!));
+      }
+    } catch (e) {
+      return Left(Failure.clientFailure(message: 'something went wrong'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, EditInventoryResponseModel>> editInventoryDetails({required TokenModel tokenModel, required EditInventoryDetailsQurrey editInventoryDetailsQurrey, required EditInventoruDetailsModel editInventoruDetailsModel}) async{
+        try {
+      _dio.options.headers['content-Type'] = 'application/json';
+      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
+      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
+      final response = await _dio.put(ApiEndPoints.inventoryImage,
+          data: editInventoruDetailsModel.toJson(), queryParameters: editInventoryDetailsQurrey.toJson());
+      if (response.statusCode == 200) {
+        return Right(EditInventoryResponseModel.fromJson(response.data));
+      } else if (response.statusCode == 500) {
+        return Left(Failure.serverFailure(
+            message:
+                EditInventoryResponseModel.fromJson(response.data).message!));
+      } else {
+        return Left(Failure.clientFailure(
+            message:
+                EditInventoryResponseModel.fromJson(response.data).message!));
       }
     } catch (e) {
       return Left(Failure.clientFailure(message: 'something went wrong'));

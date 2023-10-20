@@ -65,7 +65,7 @@ class OfferAddingTile extends StatelessWidget {
                     const Text('Discount Persentage'),
                     CustomTextFormField(
                       color: kWhite,
-                      hintText: 'amount',
+                      hintText: 'persentage',
                       controller:
                           context.read<OfferBloc>().offerAmountController,
                       width: sWidth * 0.50,
@@ -74,6 +74,7 @@ class OfferAddingTile extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         child: TextButton.icon(
                             onPressed: () {
+                              FocusScope.of(context).unfocus();
                               context.read<OfferBloc>().add(OfferEvent.addOffer(
                                   addOfferModel: AddOfferModel(
                                       categoryId: state.catogoryId,

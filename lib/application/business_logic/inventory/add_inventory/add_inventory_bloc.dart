@@ -55,7 +55,8 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
     });
 
     on<_SelectCatogory>((event, emit) {
-      emit(state.copyWith(catogoryId: event.selectedCatogory, catogory: event.catogory));
+      emit(state.copyWith(
+          catogoryId: event.selectedCatogory, catogory: event.catogory));
     });
 
     on<_PickSize>((event, emit) async {

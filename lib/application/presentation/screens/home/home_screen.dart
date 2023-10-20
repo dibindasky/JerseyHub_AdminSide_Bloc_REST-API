@@ -23,4 +23,3 @@ class ScreenHome extends StatelessWidget {
     );
   }
 }
-

@@ -51,13 +51,14 @@ class InventoryTile extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  '₹${inventory.discountedPrice}',
+                  '₹${inventory.discountedPrice!.roundToDouble()}',
                   style: priceStyle,
+                 
                 ),
                 kWidth10,
                 inventory.price! != inventory.discountedPrice!
                     ? Text(
-                        '₹${inventory.price}',
+                        '₹${inventory.price!.roundToDouble()}',
                         style: priceStyleCross,
                       )
                     : kEmpty,

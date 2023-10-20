@@ -15,7 +15,7 @@ part 'category_bloc.freezed.dart';
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final TextEditingController categoryController = TextEditingController();
   final GlobalKey<FormState> categoryKey = GlobalKey<FormState>();
-  final Map<String,int> catogoryMap={};
+  final Map<String, int> catogoryMap = {};
 
   final CatogeryApi catogeryApi = CatogeryApi();
   String? currentCategory;
@@ -33,8 +33,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
               isupdating: false,
               message: null)), (getCatogereyResponseModel) {
         categoryController.text = '';
-        for(var cat in getCatogereyResponseModel.data!){
-          catogoryMap[cat.category!]=cat.id!;
+        for (var cat in getCatogereyResponseModel.data!) {
+          catogoryMap[cat.category!] = cat.id!;
         }
         emit(state.copyWith(
             isLoading: false,

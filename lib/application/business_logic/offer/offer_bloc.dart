@@ -32,6 +32,7 @@ class OfferBloc extends Bloc<OfferEvent, OfferState> {
             getOfferResponseModel: getOfferResponseModel));
       });
     });
+
     on<_AddOffer>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
       final tokenModel = await SharedPref.getToken();
