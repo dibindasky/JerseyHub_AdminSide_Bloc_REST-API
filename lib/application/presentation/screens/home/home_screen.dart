@@ -6,12 +6,41 @@ import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 
 import 'widgets/custom_search_field.dart';
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   const ScreenHome({super.key});
 
   @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
+  final scrollController = ScrollController();
+
+  @override
+  void initState() {
+    scrollController.addListener(() {
+      _scrollCallBack();
+    });
+    super.initState();
+  }
+
+  _scrollCallBack() {
+    if (scrollController.position.pixels ==
+            scrollController.position.maxScrollExtent &&
+        !context.read<GetInventoryBloc>().isScrollLoading) {
+      context.read<GetInventoryBloc>().add(const GetInventoryEvent.nextPage());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context
+          .read<GetInventoryBloc>()
+          .add(const GetInventoryEvent.getInventoryCall());
+    });
+    return SingleChildScrollView(                    controller: scrollController,
+
       child: Column(
         children: [
           const CoustomSearchField(),
@@ -23,3 +52,4 @@ class ScreenHome extends StatelessWidget {
     );
   }
 }
+

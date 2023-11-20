@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/add/add_inventory_response_model/add_inventory_response_model.dart';
@@ -18,16 +19,16 @@ import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
 
 class InventoryApi implements InventoryRepository {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
+  final ApiService apiService = ApiService(
+      baseUrl: ApiEndPoints.baseUrl,
+      dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
 
   @override
   Future<Either<Failure, AddInventoryResponseModel>> addInventory(
       {required FormData formData, required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'multipart/form-data';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.post(ApiEndPoints.inventory, data: formData);
+      final response = await apiService.post(ApiEndPoints.inventory,
+          data: formData, headers: {'content-Type': 'multipart/form-data'});
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(AddInventoryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
@@ -45,10 +46,7 @@ class InventoryApi implements InventoryRepository {
       {required TokenModel tokenModel,
       required DeleteInventoryQurrey deleteInventory}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.delete(ApiEndPoints.inventory,
+      final response = await apiService.delete(ApiEndPoints.inventory,
           queryParameters: deleteInventory.toJson());
       if (response.statusCode == 200) {
         return Right(DeleteInventoryResponseModel.fromJson(response.data));
@@ -67,19 +65,22 @@ class InventoryApi implements InventoryRepository {
       {required GetResponseQurrey getResponseQurrey,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.get(ApiEndPoints.inventory,
+      print('get inventory -> (0)');
+      final response = await apiService.get(ApiEndPoints.inventory,
           queryParameters: getResponseQurrey.toJson());
+      print('get inventory -> (1)');
       if (response.statusCode == 200) {
+        print('get inventory -> (2)');
         return Right(GetInventoryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
+        print('get inventory -> (3)');
         return Left(Failure.serverFailure());
       } else {
+        print('get inventory -> (4)');
         return Left(Failure.clientFailure());
       }
     } catch (e) {
+      print('get inventory -> (5) $e');
       return Left(Failure.clientFailure());
     }
   }
@@ -89,10 +90,7 @@ class InventoryApi implements InventoryRepository {
       {required UpdateInventoryModel updateInventoryModel,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.inventoryStock,
+      final response = await apiService.put(ApiEndPoints.inventoryStock,
           data: updateInventoryModel.toJson());
       if (response.statusCode == 200) {
         return Right(UpdateInventoryResponseModel.fromJson(response.data));
@@ -117,10 +115,7 @@ class InventoryApi implements InventoryRepository {
       required UpdateInventoryImageQurrey updateInventoryImageQurrey,
       required FormData formData}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.inventoryImage,
+      final response = await apiService.put(ApiEndPoints.inventoryImage,
           data: formData, queryParameters: updateInventoryImageQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(UpdateInventoryImageResponse.fromJson(response.data));
@@ -139,13 +134,14 @@ class InventoryApi implements InventoryRepository {
   }
 
   @override
-  Future<Either<Failure, EditInventoryResponseModel>> editInventoryDetails({required TokenModel tokenModel, required EditInventoryDetailsQurrey editInventoryDetailsQurrey, required EditInventoruDetailsModel editInventoruDetailsModel}) async{
-        try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.inventoryImage,
-          data: editInventoruDetailsModel.toJson(), queryParameters: editInventoryDetailsQurrey.toJson());
+  Future<Either<Failure, EditInventoryResponseModel>> editInventoryDetails(
+      {required TokenModel tokenModel,
+      required EditInventoryDetailsQurrey editInventoryDetailsQurrey,
+      required EditInventoruDetailsModel editInventoruDetailsModel}) async {
+    try {
+      final response = await apiService.put(ApiEndPoints.inventoryImage,
+          data: editInventoruDetailsModel.toJson(),
+          queryParameters: editInventoryDetailsQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(EditInventoryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
@@ -157,6 +153,8 @@ class InventoryApi implements InventoryRepository {
             message:
                 EditInventoryResponseModel.fromJson(response.data).message!));
       }
+    } on DioException catch (e) {
+      return Left(Failure.clientFailure(message: 'something went wrong'));
     } catch (e) {
       return Left(Failure.clientFailure(message: 'something went wrong'));
     }

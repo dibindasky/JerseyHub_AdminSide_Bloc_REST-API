@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
 import 'package:jerseyhub_admin/domain/models/offer/add_offer_model/add_offer_model.dart';
@@ -10,18 +11,16 @@ import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/offer_repository.dart';
 
 class OfferApi implements OfferRepository {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
-
+  final ApiService apiService = ApiService(
+      baseUrl: ApiEndPoints.baseUrl,
+      dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
   @override
   Future<Either<Failure, OfferResponseModel>> addOffer(
       {required AddOfferModel addOfferModel,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
       final response =
-          await _dio.post(ApiEndPoints.offer, data: addOfferModel.toJson());
+          await apiService.post(ApiEndPoints.offer, data: addOfferModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(OfferResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
@@ -39,10 +38,7 @@ class OfferApi implements OfferRepository {
       {required TokenModel tokenModel,
       required DeleteOfferQurrey deleteCoupenQurrey}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.delete(ApiEndPoints.offer,
+      final response = await apiService.delete(ApiEndPoints.offer,
           queryParameters: deleteCoupenQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(OfferResponseModel.fromJson(response.data));
@@ -60,10 +56,7 @@ class OfferApi implements OfferRepository {
   Future<Either<Failure, GetOfferResponseModel>> getOffer(
       {required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.get(ApiEndPoints.offer);
+      final response = await apiService.get(ApiEndPoints.offer);
       if (response.statusCode == 200) {
         return Right(GetOfferResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

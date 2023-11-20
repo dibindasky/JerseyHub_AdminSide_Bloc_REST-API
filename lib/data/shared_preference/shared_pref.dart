@@ -12,6 +12,11 @@ class SharedPref {
     preferences.setString(refreshKey, tokenModel.refreshToken);
   }
 
+  static Future<void> setAccessToken({required String accessToken}) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString(accessKey, accessToken);
+  }
+
   static Future<TokenModel> getToken() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String accessToken = preferences.getString(accessKey) ?? '';

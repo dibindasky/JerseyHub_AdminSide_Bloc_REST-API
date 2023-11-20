@@ -8,7 +8,6 @@ import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/snack_show/snack_bar.dart';
 import 'package:jerseyhub_admin/application/presentation/widgets/custom_text_field.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
-import 'package:jerseyhub_admin/domain/models/inventory/get/get_response_qurrey/get_response_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_model/update_inventory_model.dart';
 
 class StockUpdater extends StatelessWidget {
@@ -43,8 +42,7 @@ class StockUpdater extends StatelessWidget {
                       message: state.message!,
                       color: kRed);
                   context.read<GetInventoryBloc>().add(
-                      GetInventoryEvent.getInventoryCall(
-                          getResponseQurrey: GetResponseQurrey(page: 1)));
+                      const GetInventoryEvent.getInventoryCall());
                   Navigator.pop(context);
                 } else if (state.stock > inventory.stock!) {
                   showSnack(

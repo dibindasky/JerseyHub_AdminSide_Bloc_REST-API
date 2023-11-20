@@ -32,6 +32,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
         emit(state.copyWith(
             isLoading: false,
             isAdded: true,
+            image: null,
             addInventoryResponseModel: addInventoryResponseModel));
       });
     });

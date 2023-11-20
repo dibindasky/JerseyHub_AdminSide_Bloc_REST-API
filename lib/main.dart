@@ -9,6 +9,7 @@ import 'package:jerseyhub_admin/application/business_logic/inventory/edit_invent
 import 'package:jerseyhub_admin/application/business_logic/inventory/get_inventory/get_inventory_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/offer/offer_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/users/users_bloc.dart';
+import 'package:jerseyhub_admin/data/services/inventry/inventory.dart';
 
 import 'application/presentation/routes/routes.dart';
 import 'application/presentation/routes/routes_generator.dart';
@@ -30,7 +31,7 @@ class JerseyHubAdmin extends StatelessWidget {
         BlocProvider(create: (context) => EditInventoryBloc()),
         BlocProvider(create: (context) => AuthBloc()),
         BlocProvider(create: (context) => AddInventoryBloc()),
-        BlocProvider(create: (context) => GetInventoryBloc()),
+        BlocProvider(create: (context) => GetInventoryBloc(InventoryApi())),
         BlocProvider(create: (context) => UsersBloc()),
         BlocProvider(create: (context) => CategoryBloc()),
         BlocProvider(create: (context) => CouponBloc()),

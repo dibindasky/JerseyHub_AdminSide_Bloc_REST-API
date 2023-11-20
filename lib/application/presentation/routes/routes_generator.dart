@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/bottom_bar/bottom_bar_screen.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/edit_inventory/edit_inventory_screen.dart';
+import 'package:jerseyhub_admin/application/presentation/screens/order/order_details.dart';
+import 'package:jerseyhub_admin/application/presentation/screens/order/orders.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
 
 import '../screens/sign_in/sign_in_screen.dart';
@@ -17,13 +19,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (ctx) => const ScreenSignIn());
       case Routes.bottomBar:
         return MaterialPageRoute(builder: (ctx) => const ScreenBottombar());
+      case Routes.ordersScreen:
+        return MaterialPageRoute(builder: (ctx) => const ScreenOrders());
       case Routes.editScreen:
-        if (arguments is Inventory) {
-          return MaterialPageRoute(
-              builder: (ctx) => ScreenEditInventory(inventory: arguments));
-        } else {
-          return _errorScreen();
-        }
+        return arguments is Inventory ? MaterialPageRoute(
+              builder: (ctx) => ScreenEditInventory(inventory: arguments)) : _errorScreen();
+      case Routes.orderDetailScreen:
+        return arguments is int ? MaterialPageRoute(
+              builder: (ctx) => ScreenOrderDetail(orderId: arguments)) : _errorScreen();
       default:
         return _errorScreen();
     }

@@ -14,7 +14,7 @@ import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 
 import '../tab_view/tab_screen.dart';
 import '../users/all_users.dart';
-import 'widgets/cart_icon.dart';
+import '../../widgets/cart_icon.dart';
 import '../inventory/add_inventory_screen.dart';
 
 class ScreenBottombar extends StatefulWidget {

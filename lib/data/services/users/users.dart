@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
 import 'package:jerseyhub_admin/domain/models/token/token.dart';
@@ -10,17 +11,15 @@ import 'package:jerseyhub_admin/domain/models/users/get_users_response_model/get
 import 'package:jerseyhub_admin/domain/repositories/users_repository.dart';
 
 class UsersApi implements UsersRepository {
-  final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
-
+  final ApiService apiService = ApiService(
+      baseUrl: ApiEndPoints.baseUrl,
+      dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
   @override
   Future<Either<Failure, GetUsersResponseModel>> getUsers(
       {required GetUsersQurrey getUsersQurrey,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.get(ApiEndPoints.getUsers,
+      final response = await apiService.get(ApiEndPoints.getUsers,
           queryParameters: getUsersQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(GetUsersResponseModel.fromJson(response.data));
@@ -39,10 +38,7 @@ class UsersApi implements UsersRepository {
       {required BlockUnblockUserQurrey blockUnblockUserQurrey,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.blockUsers,
+      final response = await apiService.put(ApiEndPoints.blockUsers,
           queryParameters: blockUnblockUserQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(BlockUnlbockUserResponseModel.fromJson(response.data));
@@ -61,10 +57,7 @@ class UsersApi implements UsersRepository {
       {required BlockUnblockUserQurrey blockUnblockUserQurrey,
       required TokenModel tokenModel}) async {
     try {
-      _dio.options.headers['content-Type'] = 'application/json';
-      _dio.options.headers['AccessToken'] = tokenModel.accessToken;
-      _dio.options.headers['RefreshToken'] = tokenModel.refreshToken;
-      final response = await _dio.put(ApiEndPoints.unblockUsers,
+      final response = await apiService.put(ApiEndPoints.unblockUsers,
           queryParameters: blockUnblockUserQurrey.toJson());
       if (response.statusCode == 200) {
         return Right(BlockUnlbockUserResponseModel.fromJson(response.data));

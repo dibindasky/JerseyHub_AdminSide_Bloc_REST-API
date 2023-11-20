@@ -1,18 +1,20 @@
 class ApiEndPoints {
   // static String baseUrl = 'http://192.168.1.5:3000/admin';
-  static String baseUrl = 'http://192.168.238.227:3000/admin';
+  static String baseUrl = 'http://192.168.176.227:3000';
 
-  static String signIn = '/adminlogin';
-  static String catogery = '/category';
-  static String coupon = '/coupons';
-  static String inventory = '/inventories';
-  static String inventoryImage = '/inventories/:id/image';
-  static String inventoryStock = '/inventories/:id/stock';
-  static String offer = '/offers';
-  static String getOrders = '/orders';
-  static String editOrderStatus = '/orders/edit/status';
-  static String addPaymentMethod = '/payment/payment-method/new';
-  static String getUsers = '/users';
-  static String blockUsers = '/users/block';
-  static String unblockUsers = '/users/unblock';
+  static String refreshUrl = '/validate-token';
+
+  static String signIn = '/admin/adminlogin';
+  static String catogery = '/admin/category';
+  static String coupon = '/admin/coupons';
+  static String inventory = '/admin/inventories';
+  static String inventoryImage = '/admin/inventories/:id/image';
+  static String inventoryStock = '/admin/inventories/:id/stock';
+  static String offer = '/admin/offers';
+  static String getOrders = '/admin/orders';
+  static String editOrderStatus = '/admin/orders/edit/status';
+  static String addPaymentMethod = '/admin/payment/payment-method/new';
+  static String getUsers = '/admin/users';
+  static String blockUsers = '/admin/users/block';
+  static String unblockUsers = '/admin/users/unblock';
 }

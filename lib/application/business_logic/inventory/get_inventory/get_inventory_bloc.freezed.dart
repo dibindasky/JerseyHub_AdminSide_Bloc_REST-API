@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GetInventoryEvent {
-  GetResponseQurrey get getResponseQurrey => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(GetResponseQurrey getResponseQurrey)
-        getInventoryCall,
+    required TResult Function() getInventoryCall,
+    required TResult Function() nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(GetResponseQurrey getResponseQurrey)? getInventoryCall,
+    TResult? Function()? getInventoryCall,
+    TResult? Function()? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(GetResponseQurrey getResponseQurrey)? getInventoryCall,
+    TResult Function()? getInventoryCall,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetInventoryCall value) getInventoryCall,
+    required TResult Function(_NextPage value) nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetInventoryCall value)? getInventoryCall,
+    TResult? Function(_NextPage value)? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetInventoryCall value)? getInventoryCall,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $GetInventoryEventCopyWith<GetInventoryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +61,6 @@ abstract class $GetInventoryEventCopyWith<$Res> {
   factory $GetInventoryEventCopyWith(
           GetInventoryEvent value, $Res Function(GetInventoryEvent) then) =
       _$GetInventoryEventCopyWithImpl<$Res, GetInventoryEvent>;
-  @useResult
-  $Res call({GetResponseQurrey getResponseQurrey});
 }
 
 /// @nodoc
@@ -74,30 +72,13 @@ class _$GetInventoryEventCopyWithImpl<$Res, $Val extends GetInventoryEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? getResponseQurrey = null,
-  }) {
-    return _then(_value.copyWith(
-      getResponseQurrey: null == getResponseQurrey
-          ? _value.getResponseQurrey
-          : getResponseQurrey // ignore: cast_nullable_to_non_nullable
-              as GetResponseQurrey,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetInventoryCallImplCopyWith<$Res>
-    implements $GetInventoryEventCopyWith<$Res> {
+abstract class _$$GetInventoryCallImplCopyWith<$Res> {
   factory _$$GetInventoryCallImplCopyWith(_$GetInventoryCallImpl value,
           $Res Function(_$GetInventoryCallImpl) then) =
       __$$GetInventoryCallImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({GetResponseQurrey getResponseQurrey});
 }
 
 /// @nodoc
@@ -107,78 +88,54 @@ class __$$GetInventoryCallImplCopyWithImpl<$Res>
   __$$GetInventoryCallImplCopyWithImpl(_$GetInventoryCallImpl _value,
       $Res Function(_$GetInventoryCallImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? getResponseQurrey = null,
-  }) {
-    return _then(_$GetInventoryCallImpl(
-      getResponseQurrey: null == getResponseQurrey
-          ? _value.getResponseQurrey
-          : getResponseQurrey // ignore: cast_nullable_to_non_nullable
-              as GetResponseQurrey,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetInventoryCallImpl implements _GetInventoryCall {
-  const _$GetInventoryCallImpl({required this.getResponseQurrey});
-
-  @override
-  final GetResponseQurrey getResponseQurrey;
+  const _$GetInventoryCallImpl();
 
   @override
   String toString() {
-    return 'GetInventoryEvent.getInventoryCall(getResponseQurrey: $getResponseQurrey)';
+    return 'GetInventoryEvent.getInventoryCall()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetInventoryCallImpl &&
-            (identical(other.getResponseQurrey, getResponseQurrey) ||
-                other.getResponseQurrey == getResponseQurrey));
+        (other.runtimeType == runtimeType && other is _$GetInventoryCallImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getResponseQurrey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetInventoryCallImplCopyWith<_$GetInventoryCallImpl> get copyWith =>
-      __$$GetInventoryCallImplCopyWithImpl<_$GetInventoryCallImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(GetResponseQurrey getResponseQurrey)
-        getInventoryCall,
+    required TResult Function() getInventoryCall,
+    required TResult Function() nextPage,
   }) {
-    return getInventoryCall(getResponseQurrey);
+    return getInventoryCall();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(GetResponseQurrey getResponseQurrey)? getInventoryCall,
+    TResult? Function()? getInventoryCall,
+    TResult? Function()? nextPage,
   }) {
-    return getInventoryCall?.call(getResponseQurrey);
+    return getInventoryCall?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(GetResponseQurrey getResponseQurrey)? getInventoryCall,
+    TResult Function()? getInventoryCall,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (getInventoryCall != null) {
-      return getInventoryCall(getResponseQurrey);
+      return getInventoryCall();
     }
     return orElse();
   }
@@ -187,6 +144,7 @@ class _$GetInventoryCallImpl implements _GetInventoryCall {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetInventoryCall value) getInventoryCall,
+    required TResult Function(_NextPage value) nextPage,
   }) {
     return getInventoryCall(this);
   }
@@ -195,6 +153,7 @@ class _$GetInventoryCallImpl implements _GetInventoryCall {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetInventoryCall value)? getInventoryCall,
+    TResult? Function(_NextPage value)? nextPage,
   }) {
     return getInventoryCall?.call(this);
   }
@@ -203,6 +162,7 @@ class _$GetInventoryCallImpl implements _GetInventoryCall {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetInventoryCall value)? getInventoryCall,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) {
     if (getInventoryCall != null) {
@@ -213,25 +173,118 @@ class _$GetInventoryCallImpl implements _GetInventoryCall {
 }
 
 abstract class _GetInventoryCall implements GetInventoryEvent {
-  const factory _GetInventoryCall(
-          {required final GetResponseQurrey getResponseQurrey}) =
-      _$GetInventoryCallImpl;
+  const factory _GetInventoryCall() = _$GetInventoryCallImpl;
+}
+
+/// @nodoc
+abstract class _$$NextPageImplCopyWith<$Res> {
+  factory _$$NextPageImplCopyWith(
+          _$NextPageImpl value, $Res Function(_$NextPageImpl) then) =
+      __$$NextPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextPageImplCopyWithImpl<$Res>
+    extends _$GetInventoryEventCopyWithImpl<$Res, _$NextPageImpl>
+    implements _$$NextPageImplCopyWith<$Res> {
+  __$$NextPageImplCopyWithImpl(
+      _$NextPageImpl _value, $Res Function(_$NextPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NextPageImpl implements _NextPage {
+  const _$NextPageImpl();
 
   @override
-  GetResponseQurrey get getResponseQurrey;
+  String toString() {
+    return 'GetInventoryEvent.nextPage()';
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$GetInventoryCallImplCopyWith<_$GetInventoryCallImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NextPageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getInventoryCall,
+    required TResult Function() nextPage,
+  }) {
+    return nextPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getInventoryCall,
+    TResult? Function()? nextPage,
+  }) {
+    return nextPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getInventoryCall,
+    TResult Function()? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetInventoryCall value) getInventoryCall,
+    required TResult Function(_NextPage value) nextPage,
+  }) {
+    return nextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetInventoryCall value)? getInventoryCall,
+    TResult? Function(_NextPage value)? nextPage,
+  }) {
+    return nextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetInventoryCall value)? getInventoryCall,
+    TResult Function(_NextPage value)? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPage implements GetInventoryEvent {
+  const factory _NextPage() = _$NextPageImpl;
 }
 
 /// @nodoc
 mixin _$GetInventoryState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get loadMore => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  GetInventoryResponseModel? get getInventoryResponseModel =>
-      throw _privateConstructorUsedError;
+  List<Inventory>? get inventories => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GetInventoryStateCopyWith<GetInventoryState> get copyWith =>
@@ -247,8 +300,9 @@ abstract class $GetInventoryStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool loadMore,
       String? message,
-      GetInventoryResponseModel? getInventoryResponseModel});
+      List<Inventory>? inventories});
 }
 
 /// @nodoc
@@ -266,8 +320,9 @@ class _$GetInventoryStateCopyWithImpl<$Res, $Val extends GetInventoryState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? loadMore = null,
     Object? message = freezed,
-    Object? getInventoryResponseModel = freezed,
+    Object? inventories = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -278,14 +333,18 @@ class _$GetInventoryStateCopyWithImpl<$Res, $Val extends GetInventoryState>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadMore: null == loadMore
+          ? _value.loadMore
+          : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      getInventoryResponseModel: freezed == getInventoryResponseModel
-          ? _value.getInventoryResponseModel
-          : getInventoryResponseModel // ignore: cast_nullable_to_non_nullable
-              as GetInventoryResponseModel?,
+      inventories: freezed == inventories
+          ? _value.inventories
+          : inventories // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>?,
     ) as $Val);
   }
 }
@@ -301,8 +360,9 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool loadMore,
       String? message,
-      GetInventoryResponseModel? getInventoryResponseModel});
+      List<Inventory>? inventories});
 }
 
 /// @nodoc
@@ -318,8 +378,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? loadMore = null,
     Object? message = freezed,
-    Object? getInventoryResponseModel = freezed,
+    Object? inventories = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -330,14 +391,18 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadMore: null == loadMore
+          ? _value.loadMore
+          : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      getInventoryResponseModel: freezed == getInventoryResponseModel
-          ? _value.getInventoryResponseModel
-          : getInventoryResponseModel // ignore: cast_nullable_to_non_nullable
-              as GetInventoryResponseModel?,
+      inventories: freezed == inventories
+          ? _value._inventories
+          : inventories // ignore: cast_nullable_to_non_nullable
+              as List<Inventory>?,
     ));
   }
 }
@@ -348,21 +413,32 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.loadMore,
       this.message,
-      this.getInventoryResponseModel});
+      final List<Inventory>? inventories})
+      : _inventories = inventories;
 
   @override
   final bool isLoading;
   @override
   final bool hasError;
   @override
-  final String? message;
+  final bool loadMore;
   @override
-  final GetInventoryResponseModel? getInventoryResponseModel;
+  final String? message;
+  final List<Inventory>? _inventories;
+  @override
+  List<Inventory>? get inventories {
+    final value = _inventories;
+    if (value == null) return null;
+    if (_inventories is EqualUnmodifiableListView) return _inventories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'GetInventoryState(isLoading: $isLoading, hasError: $hasError, message: $message, getInventoryResponseModel: $getInventoryResponseModel)';
+    return 'GetInventoryState(isLoading: $isLoading, hasError: $hasError, loadMore: $loadMore, message: $message, inventories: $inventories)';
   }
 
   @override
@@ -374,15 +450,16 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.loadMore, loadMore) ||
+                other.loadMore == loadMore) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.getInventoryResponseModel,
-                    getInventoryResponseModel) ||
-                other.getInventoryResponseModel == getInventoryResponseModel));
+            const DeepCollectionEquality()
+                .equals(other._inventories, _inventories));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, hasError, message, getInventoryResponseModel);
+  int get hashCode => Object.hash(runtimeType, isLoading, hasError, loadMore,
+      message, const DeepCollectionEquality().hash(_inventories));
 
   @JsonKey(ignore: true)
   @override
@@ -393,20 +470,22 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements GetInventoryState {
   const factory _Initial(
-          {required final bool isLoading,
-          required final bool hasError,
-          final String? message,
-          final GetInventoryResponseModel? getInventoryResponseModel}) =
-      _$InitialImpl;
+      {required final bool isLoading,
+      required final bool hasError,
+      required final bool loadMore,
+      final String? message,
+      final List<Inventory>? inventories}) = _$InitialImpl;
 
   @override
   bool get isLoading;
   @override
   bool get hasError;
   @override
+  bool get loadMore;
+  @override
   String? get message;
   @override
-  GetInventoryResponseModel? get getInventoryResponseModel;
+  List<Inventory>? get inventories;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

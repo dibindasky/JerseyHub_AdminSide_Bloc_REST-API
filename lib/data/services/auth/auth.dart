@@ -19,7 +19,6 @@ class ApiAuth implements AuthRepository {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(LoginResponse.fromJson(response.data));
       } else {
-        log('error => 0');
         return Left(
             ErrorMsg(message: LoginResponse.fromJson(response.data).message!));
       }

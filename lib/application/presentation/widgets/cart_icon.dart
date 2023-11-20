@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:jerseyhub_admin/application/presentation/routes/routes.dart';
 
-import '../../../utils/colors.dart';
+import '../utils/colors.dart';
 
 class CartIconButton extends StatelessWidget {
   const CartIconButton({
@@ -17,7 +17,7 @@ class CartIconButton extends StatelessWidget {
           backgroundColor: kGrey,
           child: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.testScreen);
+              Navigator.pushNamed(context, Routes.ordersScreen);
             },
             icon: const Icon(Iconsax.shopping_bag),
           ),
