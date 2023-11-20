@@ -65,22 +65,16 @@ class InventoryApi implements InventoryRepository {
       {required GetResponseQurrey getResponseQurrey,
       required TokenModel tokenModel}) async {
     try {
-      print('get inventory -> (0)');
       final response = await apiService.get(ApiEndPoints.inventory,
           queryParameters: getResponseQurrey.toJson());
-      print('get inventory -> (1)');
       if (response.statusCode == 200) {
-        print('get inventory -> (2)');
         return Right(GetInventoryResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
-        print('get inventory -> (3)');
         return Left(Failure.serverFailure());
       } else {
-        print('get inventory -> (4)');
         return Left(Failure.clientFailure());
       }
     } catch (e) {
-      print('get inventory -> (5) $e');
       return Left(Failure.clientFailure());
     }
   }
@@ -154,6 +148,7 @@ class InventoryApi implements InventoryRepository {
                 EditInventoryResponseModel.fromJson(response.data).message!));
       }
     } on DioException catch (e) {
+      e;
       return Left(Failure.clientFailure(message: 'something went wrong'));
     } catch (e) {
       return Left(Failure.clientFailure(message: 'something went wrong'));

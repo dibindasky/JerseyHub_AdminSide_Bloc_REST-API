@@ -6,7 +6,6 @@ import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/add_coupon_model/add_coupon_model.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delete_coupen_qurrey.dart';
-import 'package:jerseyhub_admin/domain/models/coupons/get_coupons_response_model/coupon.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/get_coupons_response_model/get_coupons_response_model.dart';
 
 part 'coupon_event.dart';

@@ -8,6 +8,6 @@ class GetInventoryState with _$GetInventoryState {
       required bool loadMore,
       String? message,
       List<Inventory>? inventories}) = _Initial;
-  factory GetInventoryState.initial() =>
-      const GetInventoryState(isLoading: false, hasError: false,loadMore: false);
+  factory GetInventoryState.initial() => const GetInventoryState(
+      isLoading: false, hasError: false, loadMore: false);
 }

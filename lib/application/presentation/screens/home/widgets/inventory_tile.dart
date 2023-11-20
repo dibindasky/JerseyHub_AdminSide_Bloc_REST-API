@@ -53,7 +53,6 @@ class InventoryTile extends StatelessWidget {
                 Text(
                   '₹${inventory.discountedPrice!.roundToDouble()}',
                   style: priceStyle,
-                 
                 ),
                 kWidth10,
                 inventory.price! != inventory.discountedPrice!

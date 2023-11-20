@@ -59,7 +59,7 @@ class UserTile extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
-                            user.blockStatus! ? kRed.withOpacity(0.5) : kRed,
+                            user.blockStatus! ? kRed.withOpacity(0.3) : kRed,
                         foregroundColor: kWhite),
                     child: const Text('Block'),
                   ),
@@ -73,7 +73,7 @@ class UserTile extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: !user.blockStatus!
-                            ? kGreen.withOpacity(0.5)
+                            ? kGreen.withOpacity(0.3)
                             : kGreen,
                         foregroundColor: kWhite),
                     child: const Text('UnBlock'),

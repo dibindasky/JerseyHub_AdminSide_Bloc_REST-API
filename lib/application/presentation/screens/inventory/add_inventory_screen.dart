@@ -71,4 +71,3 @@ class ScreenAddInventory extends StatelessWidget {
     );
   }
 }
-

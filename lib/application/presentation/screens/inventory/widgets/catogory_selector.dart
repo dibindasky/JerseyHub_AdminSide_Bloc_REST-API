@@ -58,4 +58,3 @@ class CategoryAdder extends StatelessWidget {
     );
   }
 }
-

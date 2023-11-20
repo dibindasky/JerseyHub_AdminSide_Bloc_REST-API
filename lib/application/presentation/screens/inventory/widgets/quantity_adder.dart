@@ -41,5 +41,3 @@ class QuantityAdder extends StatelessWidget {
     );
   }
 }
-
-

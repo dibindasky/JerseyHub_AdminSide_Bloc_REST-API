@@ -19,8 +19,8 @@ class OfferApi implements OfferRepository {
       {required AddOfferModel addOfferModel,
       required TokenModel tokenModel}) async {
     try {
-      final response =
-          await apiService.post(ApiEndPoints.offer, data: addOfferModel.toJson());
+      final response = await apiService.post(ApiEndPoints.offer,
+          data: addOfferModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(OfferResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

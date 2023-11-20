@@ -22,11 +22,15 @@ class RouteGenerator {
       case Routes.ordersScreen:
         return MaterialPageRoute(builder: (ctx) => const ScreenOrders());
       case Routes.editScreen:
-        return arguments is Inventory ? MaterialPageRoute(
-              builder: (ctx) => ScreenEditInventory(inventory: arguments)) : _errorScreen();
+        return arguments is Inventory
+            ? MaterialPageRoute(
+                builder: (ctx) => ScreenEditInventory(inventory: arguments))
+            : _errorScreen();
       case Routes.orderDetailScreen:
-        return arguments is int ? MaterialPageRoute(
-              builder: (ctx) => ScreenOrderDetail(orderId: arguments)) : _errorScreen();
+        return arguments is int
+            ? MaterialPageRoute(
+                builder: (ctx) => ScreenOrderDetail(orderId: arguments))
+            : _errorScreen();
       default:
         return _errorScreen();
     }

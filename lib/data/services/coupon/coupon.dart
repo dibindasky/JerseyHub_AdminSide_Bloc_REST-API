@@ -20,8 +20,8 @@ class CouponApi implements CouponRepository {
       {required AddCouponModel addCouponModel,
       required TokenModel tokenModel}) async {
     try {
-      final response =
-          await apiService.post(ApiEndPoints.coupon, data: addCouponModel.toJson());
+      final response = await apiService.post(ApiEndPoints.coupon,
+          data: addCouponModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(CoupenResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

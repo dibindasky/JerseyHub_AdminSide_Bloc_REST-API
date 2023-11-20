@@ -41,8 +41,9 @@ class StockUpdater extends StatelessWidget {
                       context: context,
                       message: state.message!,
                       color: kRed);
-                  context.read<GetInventoryBloc>().add(
-                      const GetInventoryEvent.getInventoryCall());
+                  context
+                      .read<GetInventoryBloc>()
+                      .add(const GetInventoryEvent.getInventoryCall());
                   Navigator.pop(context);
                 } else if (state.stock > inventory.stock!) {
                   showSnack(

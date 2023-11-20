@@ -54,7 +54,7 @@ class OrderListView extends StatelessWidget {
         title: const Text('name, house name, city , state, phone:565655656'),
         trailing: const Text('702.2'),
         onTap: () {
-          Navigator.pushNamed(context, Routes.orderDetailScreen,arguments: 5);
+          Navigator.pushNamed(context, Routes.orderDetailScreen, arguments: 5);
         },
       ),
     );

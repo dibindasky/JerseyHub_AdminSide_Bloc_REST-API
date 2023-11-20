@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jerseyhub_admin/application/business_logic/coupon/coupon_bloc.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/tab_view/coupons/widgets/coupon_adding_tile.dart';
 import 'package:jerseyhub_admin/application/presentation/screens/tab_view/coupons/widgets/coupon_list_view.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';

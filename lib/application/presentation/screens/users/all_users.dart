@@ -59,4 +59,3 @@ class ScreenAllUsers extends StatelessWidget {
     );
   }
 }
-

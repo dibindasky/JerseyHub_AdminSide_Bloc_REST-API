@@ -29,25 +29,22 @@ class InventoryListView extends StatelessWidget {
           return const Center(
             child: Text('cant connect to server'),
           );
-        } else if (state.inventories != null &&
-            state.inventories!.isNotEmpty) {
+        } else if (state.inventories != null && state.inventories!.isNotEmpty) {
           return GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 1 / 1.6,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1 / 1.6,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 2),
               itemCount: state.loadMore
                   ? state.inventories!.length + 1
                   : state.inventories!.length,
               itemBuilder: (context, index) =>
                   state.inventories!.length == index && state.loadMore
                       ? const LoadingAnimation(width: 0.10)
-                      : InventoryTile(
-                          inventory: state.inventories![index]));
+                      : InventoryTile(inventory: state.inventories![index]));
         } else {
           return const Center(child: Text('no data avaliable '));
         }

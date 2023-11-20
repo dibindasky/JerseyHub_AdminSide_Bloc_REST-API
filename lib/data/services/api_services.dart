@@ -14,27 +14,26 @@ class ApiService {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? data,
   }) async {
-    print('in ApiServices get = > () ');
     try {
       final accessToken =
           await SharedPref.getToken().then((token) => token.accessToken);
-      dio.options.headers.addAll({'Authorization': accessToken,...headers??{'content-Type': 'application/json'}},);
-    print('in ApiServices get token  = > () -- ${dio.options.headers}');
-      final response = await dio.get(url,
-          data: data, queryParameters: queryParameters);
-      print('in ApiServices get = > (1.1) ');
+      dio.options.headers.addAll(
+        {
+          'Authorization': accessToken,
+          ...headers ?? {'content-Type': 'application/json'}
+        },
+      );
+      final response =
+          await dio.get(url, data: data, queryParameters: queryParameters);
       return response;
-    }on DioException catch(exception){
-         if (exception.response?.statusCode == 401) {
-          print('gonna call refresh currently have 401');
-          await _refreshAccessToken();
-          return await _retry(exception.requestOptions);
-        }else{
-          rethrow;
-        }
-    }
-     catch (e) {
-      print('in ApiServices get= > (error) $e');
+    } on DioException catch (exception) {
+      if (exception.response?.statusCode == 401) {
+        await _refreshAccessToken();
+        return await _retry(exception.requestOptions);
+      } else {
+        rethrow;
+      }
+    } catch (e) {
       rethrow;
     }
   }
@@ -45,26 +44,29 @@ class ApiService {
     Map<String, dynamic>? headers,
     dynamic data,
   }) async {
-    print('in ApiServices post = > () ');
     try {
       final accessToken =
           await SharedPref.getToken().then((token) => token.accessToken);
-      dio.options.headers.addAll({'Authorization': accessToken,...headers??{}},);
-    print('in ApiServices get token  = > () -- ${dio.options.headers}');
-      final response = await dio.post(url,
-          data:data is FormData? data :data as Map<String,dynamic>?, queryParameters: queryParameters,);
-      print('in ApiServices post = > (1.1) ');
+      dio.options.headers.addAll(
+        {
+          'Authorization': accessToken,
+          ...headers ?? {'content-Type': 'application/json'}
+        },
+      );
+      final response = await dio.post(
+        url,
+        data: data is FormData ? data : data as Map<String, dynamic>?,
+        queryParameters: queryParameters,
+      );
       return response;
-    }on DioException catch(exception){
-         if (exception.response?.statusCode == 401) {
-          print('gonna call refresh currently have 401');
-          await _refreshAccessToken();
-          return await _retry(exception.requestOptions);
-        }else{
-          rethrow;
-        }
+    } on DioException catch (exception) {
+      if (exception.response?.statusCode == 401) {
+        await _refreshAccessToken();
+        return await _retry(exception.requestOptions);
+      } else {
+        rethrow;
+      }
     } catch (e) {
-      print('in ApiServices post= > (error) $e');
       rethrow;
     }
   }
@@ -75,25 +77,27 @@ class ApiService {
     Map<String, dynamic>? headers,
     dynamic data,
   }) async {
-    print('in ApiServices put = > () ');
     try {
       final accessToken =
           await SharedPref.getToken().then((token) => token.accessToken);
-      dio.options.headers.addAll({'Authorization': accessToken,...headers??{}},);
+      dio.options.headers.addAll(
+        {
+          'Authorization': accessToken,
+          ...headers ?? {'content-Type': 'application/json'}
+        },
+      );
       final response = await dio.put(url,
-          data: data is FormData? data :data as Map<String,dynamic>?, queryParameters: queryParameters);
-      print('in ApiServices put = > (1.1) ');
+          data: data is FormData ? data : data as Map<String, dynamic>?,
+          queryParameters: queryParameters);
       return response;
-    }on DioException catch(exception){
-         if (exception.response?.statusCode == 401) {
-          print('gonna call refresh currently have 401');
-          await _refreshAccessToken();
-          return await _retry(exception.requestOptions);
-        }else{
-          rethrow;
-        }
+    } on DioException catch (exception) {
+      if (exception.response?.statusCode == 401) {
+        await _refreshAccessToken();
+        return await _retry(exception.requestOptions);
+      } else {
+        rethrow;
+      }
     } catch (e) {
-      print('in ApiServices put= > (error) $e');
       rethrow;
     }
   }
@@ -104,56 +108,49 @@ class ApiService {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? data,
   }) async {
-    print('in ApiServices delete = > () ');
     try {
       final accessToken =
           await SharedPref.getToken().then((token) => token.accessToken);
-      dio.options.headers.addAll({'Authorization': accessToken,...headers??{}},);
-      final response = await dio.delete(url,
-          data: data, queryParameters: queryParameters);
-      print('in ApiServices delete = > (1.1) ');
+      dio.options.headers.addAll(
+        {
+          'Authorization': accessToken,
+          ...headers ?? {'content-Type': 'application/json'}
+        },
+      );
+      final response =
+          await dio.delete(url, data: data, queryParameters: queryParameters);
       return response;
-    }on DioException catch(exception){
-         if (exception.response?.statusCode == 401) {
-          print('gonna call refresh currently have 401');
-          await _refreshAccessToken();
-          return await _retry(exception.requestOptions);
-        }else{
-          rethrow;
-        }
+    } on DioException catch (exception) {
+      if (exception.response?.statusCode == 401) {
+        await _refreshAccessToken();
+        return await _retry(exception.requestOptions);
+      } else {
+        rethrow;
+      }
     } catch (e) {
-      print('in ApiServices delete= > (error) $e');
       rethrow;
     }
   }
 
   _refreshAccessToken() async {
-    print('in refreshToken = > () ');
     try {
       final token =
           await SharedPref.getToken().then((token) => token.refreshToken);
-      final response = await Dio(BaseOptions(baseUrl: baseUrl,headers: {'RefreshToken':token})).get(
-          ApiEndPoints.refreshUrl);
+      final response = await Dio(
+              BaseOptions(baseUrl: baseUrl, headers: {'RefreshToken': token}))
+          .get(ApiEndPoints.refreshUrl);
       await SharedPref.setAccessToken(accessToken: response.data.toString());
-    print('in refreshToken = > (done) ');
     } catch (e) {
       rethrow;
     }
   }
 
   Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
-    print('in retry = > () ');
-    // final options =
-    //     Options(method: requestOptions.method, headers: requestOptions.headers);
     final accessToken =
         await SharedPref.getToken().then((token) => token.accessToken);
-    // final headers = options.headers;
-    // headers?['Authorization'] = accessToken;
-    // options.headers = headers;
-    dio.options.headers['Authorization']=accessToken;
+    dio.options.headers['Authorization'] = accessToken;
     return await dio.request(requestOptions.path,
-        // options: options,
-         queryParameters: requestOptions.queryParameters);
+        queryParameters: requestOptions.queryParameters);
   }
 }
 
@@ -256,7 +253,7 @@ class ApiService {
 //                 'content-Type': 'application/json'
 //               }),
 //               queryParameters: queryParameters);
-              
+
 //           //  return _dio.request(e.request.path, options: e.request.data);
 //         }
 //       }

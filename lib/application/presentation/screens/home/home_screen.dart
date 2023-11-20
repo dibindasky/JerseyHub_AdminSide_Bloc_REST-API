@@ -39,8 +39,8 @@ class _ScreenHomeState extends State<ScreenHome> {
           .read<GetInventoryBloc>()
           .add(const GetInventoryEvent.getInventoryCall());
     });
-    return SingleChildScrollView(                    controller: scrollController,
-
+    return SingleChildScrollView(
+      controller: scrollController,
       child: Column(
         children: [
           const CoustomSearchField(),
@@ -52,4 +52,3 @@ class _ScreenHomeState extends State<ScreenHome> {
     );
   }
 }
-

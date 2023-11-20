@@ -12,6 +12,7 @@ class ApiEndPoints {
   static String inventoryStock = '/admin/inventories/:id/stock';
   static String offer = '/admin/offers';
   static String getOrders = '/admin/orders';
+  static String getOrderDetail = '/admin/orders/{id}';
   static String editOrderStatus = '/admin/orders/edit/status';
   static String addPaymentMethod = '/admin/payment/payment-method/new';
   static String getUsers = '/admin/users';

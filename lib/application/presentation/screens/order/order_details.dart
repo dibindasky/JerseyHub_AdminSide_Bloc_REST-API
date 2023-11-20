@@ -20,13 +20,13 @@ class ScreenOrderDetail extends StatelessWidget {
         child: Padding(
             padding: const EdgeInsets.all(25),
             child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, 
-              children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: 3,
-                  itemBuilder: (context, index) => const OrderDetailItemTile(),
-                  separatorBuilder: (context, index) =>kHeight5,),
+                shrinkWrap: true,
+                itemCount: 3,
+                itemBuilder: (context, index) => const OrderDetailItemTile(),
+                separatorBuilder: (context, index) => kHeight5,
+              ),
               const Divider(),
               const Text(
                 'TOTAL AMOUND : 400',
@@ -46,26 +46,24 @@ class ScreenOrderDetail extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               ]),
-               Row(children: [
-                Text('Order Status : '),
+              Row(children: [
+                const Text('Order Status : '),
                 TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Return Order',
-                    style: TextStyle(color: kRed),
-                  )),
+                    onPressed: () {},
+                    child: const Text(
+                      'Return Order',
+                      style: TextStyle(color: kRed),
+                    )),
               ]),
-               Row(children: [
-                Text('Paymnet Status : '),
+              Row(children: [
+                const Text('Paymnet Status : '),
                 TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Not Paid',
-                    style: TextStyle(color: kRed),
-                  )),
+                    onPressed: () {},
+                    child: const Text(
+                      'Not Paid',
+                      style: TextStyle(color: kRed),
+                    )),
               ]),
-              
-                
             ])),
       ),
     );
@@ -103,16 +101,15 @@ class OrderDetailItemTile extends StatelessWidget {
           children: [
             SizedBox(
               width: sWidth * 0.60,
-              child: Text(
+              child: const Text(
                 'name',
                 overflow: TextOverflow.ellipsis,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
               ),
             ),
             kHeight10,
-            Text('Quantity - 10'),
-            Row(
+            const Text('Quantity - 10'),
+            const Row(
               children: [
                 Text('Amount : '),
                 Text(
