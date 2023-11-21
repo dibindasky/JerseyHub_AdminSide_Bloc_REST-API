@@ -10,7 +10,7 @@ OrderProduct _$OrderProductFromJson(Map<String, dynamic> json) => OrderProduct(
       productName: json['ProductName'] as String?,
       image: json['Image'] as String?,
       quantity: json['Quantity'] as int?,
-      amount: json['Amount'] as int?,
+      amount: (json['Amount'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$OrderProductToJson(OrderProduct instance) =>

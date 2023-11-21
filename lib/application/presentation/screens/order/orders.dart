@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jerseyhub_admin/application/presentation/routes/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jerseyhub_admin/application/business_logic/order/order_bloc.dart';
+import 'package:jerseyhub_admin/application/presentation/screens/order/widgets/order_list.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/colors.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/constant.dart';
 
@@ -8,6 +10,9 @@ class ScreenOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) { 
+      context.read<OrderBloc>().add(const OrderEvent.getOrders());
+    });
     return DefaultTabController(
       length: 5,
       child: Scaffold(
@@ -28,35 +33,19 @@ class ScreenOrders extends StatelessWidget {
                 Tab(child: Text('Canceled'))
               ]),
         ),
-        body: const TabBarView(children: [
-          OrderListView(),
-          OrderListView(),
-          OrderListView(),
-          OrderListView(),
-          OrderListView(),
-        ]),
+        body: BlocBuilder<OrderBloc, OrderState>(
+          builder: (context, state) {
+            return TabBarView(children: [
+              OrderListView(orderList: state.pending),
+              OrderListView(orderList: state.shipped),
+              OrderListView(orderList: state.delivered),
+              OrderListView(orderList: state.returned),
+              OrderListView(orderList: state.cancled),
+            ]);
+          },
+        ),
       ),
     );
   }
 }
 
-class OrderListView extends StatelessWidget {
-  const OrderListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: (context, index) => ListTile(
-        leading: CircleAvatar(child: Text('$index')),
-        title: const Text('name, house name, city , state, phone:565655656'),
-        trailing: const Text('702.2'),
-        onTap: () {
-          Navigator.pushNamed(context, Routes.orderDetailScreen, arguments: 5);
-        },
-      ),
-    );
-  }
-}

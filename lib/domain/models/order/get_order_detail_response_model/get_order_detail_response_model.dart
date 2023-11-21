@@ -5,7 +5,7 @@ import 'order_detail.dart';
 part 'get_order_detail_response_model.g.dart';
 
 @JsonSerializable()
-class GetOrderDetailResponseModel {
+class  GetOrderDetailResponseModel {
   @JsonKey(name: 'status_code')
   int? statusCode;
   String? message;

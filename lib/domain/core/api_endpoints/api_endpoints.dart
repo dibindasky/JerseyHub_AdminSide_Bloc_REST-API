@@ -13,7 +13,8 @@ class ApiEndPoints {
   static String offer = '/admin/offers';
   static String getOrders = '/admin/orders';
   static String getOrderDetail = '/admin/orders/{id}';
-  static String editOrderStatus = '/admin/orders/edit/status';
+  static String editOrderStatus = '/admin/orders/status';
+  static String editOrderPaymentStatus = '/admin/orders/payment-status';
   static String addPaymentMethod = '/admin/payment/payment-method/new';
   static String getUsers = '/admin/users';
   static String blockUsers = '/admin/users/block';
