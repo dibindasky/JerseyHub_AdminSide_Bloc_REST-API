@@ -7,6 +7,7 @@ import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_model/login_model.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_response/login_response.dart';
 import 'package:jerseyhub_admin/domain/models/token/token.dart';
+import 'package:jerseyhub_admin/domain/repositories/authentication_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -17,9 +18,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> siginInKey = GlobalKey<FormState>();
 
-  final ApiAuth apiAuth = ApiAuth();
+  final AuthRepository apiAuth;
 
-  AuthBloc() : super(AuthState.initial()) {
+  AuthBloc(this.apiAuth) : super(AuthState.initial()) {
     on<_SignIn>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false));
       final result = await apiAuth.signIn(event.loginModel);

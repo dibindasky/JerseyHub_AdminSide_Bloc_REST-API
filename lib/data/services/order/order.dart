@@ -52,7 +52,8 @@ class OrderApi implements OrderRepository {
   Future<Either<Failure, SuccessResponseModel>> updateOrderStatus(
       {required UpdateOrderStatusModel updateOrderStatusModel}) async {
     try {
-      final response = await apiService.put(ApiEndPoints.editOrderStatus,data: updateOrderStatusModel.toJson());
+      final response = await apiService.put(ApiEndPoints.editOrderStatus,
+          data: updateOrderStatusModel.toJson());
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(SuccessResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {
@@ -69,8 +70,8 @@ class OrderApi implements OrderRepository {
   Future<Either<Failure, SuccessResponseModel>> updatePaymentStatus(
       {required int id}) async {
     try {
-      final response = await apiService
-          .put(ApiEndPoints.editOrderPaymentStatus,queryParameters: {"id":id});
+      final response = await apiService.put(ApiEndPoints.editOrderPaymentStatus,
+          queryParameters: {"id": id});
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(SuccessResponseModel.fromJson(response.data));
       } else if (response.statusCode == 500) {

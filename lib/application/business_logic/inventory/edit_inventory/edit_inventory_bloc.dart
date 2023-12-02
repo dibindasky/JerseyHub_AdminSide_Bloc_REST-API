@@ -3,23 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/image_picker/image_picker.dart';
-import 'package:jerseyhub_admin/data/services/inventry/inventory.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/delete/delete_inventory_qurrey/delete_inventory_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_qurrey/update_inventory_image_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_model/update_inventory_model.dart';
+import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
 
 part 'edit_inventory_event.dart';
 part 'edit_inventory_state.dart';
 part 'edit_inventory_bloc.freezed.dart';
 
 class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
-  final InventoryApi inventoryApi = InventoryApi();
+  final InventoryRepository inventoryApi;
   final TextEditingController stockUpdateController =
       TextEditingController(text: '0');
   final GlobalKey<FormState> stockFormKey = GlobalKey<FormState>();
-  EditInventoryBloc() : super(EditInventoryState.initial()) {
+  EditInventoryBloc(this.inventoryApi) : super(EditInventoryState.initial()) {
     on<_SetStock>((event, emit) {
       emit(state.copyWith(
           stock: event.stock,

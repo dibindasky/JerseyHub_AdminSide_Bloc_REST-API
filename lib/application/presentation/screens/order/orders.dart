@@ -10,7 +10,7 @@ class ScreenOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) { 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<OrderBloc>().add(const OrderEvent.getOrders());
     });
     return DefaultTabController(
@@ -48,4 +48,3 @@ class ScreenOrders extends StatelessWidget {
     );
   }
 }
-

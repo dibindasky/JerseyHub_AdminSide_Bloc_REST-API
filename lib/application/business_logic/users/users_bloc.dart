@@ -5,14 +5,15 @@ import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/users/block_unblock_user_qurrey/block_unblock_user_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/users/get_users_qurrey/get_users_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/users/get_users_response_model/get_users_response_model.dart';
+import 'package:jerseyhub_admin/domain/repositories/users_repository.dart';
 
 part 'users_event.dart';
 part 'users_state.dart';
 part 'users_bloc.freezed.dart';
 
 class UsersBloc extends Bloc<UsersEvent, UsersState> {
-  UsersBloc() : super(UsersState.initial()) {
-    final UsersApi usersApi = UsersApi();
+  final UsersRepository usersApi;
+  UsersBloc(this.usersApi) : super(UsersState.initial()) {
 
     on<_GetUsers>((event, emit) async {
       emit(state.copyWith(

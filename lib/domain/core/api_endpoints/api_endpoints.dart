@@ -1,6 +1,6 @@
 class ApiEndPoints {
-  // static String baseUrl = 'http://192.168.1.5:3000/admin';
-  static String baseUrl = 'http://192.168.176.227:3000';
+  static String baseUrl = 'https://jerseyhubmadebyarunk.store';
+  // static String baseUrl = 'http://192.168.176.227:3000';
 
   static String refreshUrl = '/validate-token';
 

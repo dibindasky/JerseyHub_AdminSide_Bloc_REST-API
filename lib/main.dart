@@ -10,9 +10,13 @@ import 'package:jerseyhub_admin/application/business_logic/inventory/get_invento
 import 'package:jerseyhub_admin/application/business_logic/offer/offer_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/order/order_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/users/users_bloc.dart';
+import 'package:jerseyhub_admin/data/services/auth/auth.dart';
+import 'package:jerseyhub_admin/data/services/catogery/catogery.dart';
+import 'package:jerseyhub_admin/data/services/coupon/coupon.dart';
 import 'package:jerseyhub_admin/data/services/inventry/inventory.dart';
+import 'package:jerseyhub_admin/data/services/offer/offer.dart';
 import 'package:jerseyhub_admin/data/services/order/order.dart';
-
+import 'package:jerseyhub_admin/data/services/users/users.dart';
 import 'application/presentation/routes/routes.dart';
 import 'application/presentation/routes/routes_generator.dart';
 
@@ -30,14 +34,14 @@ class JerseyHubAdmin extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BottomBarCubitCubit()),
-        BlocProvider(create: (context) => EditInventoryBloc()),
-        BlocProvider(create: (context) => AuthBloc()),
-        BlocProvider(create: (context) => AddInventoryBloc()),
+        BlocProvider(create: (context) => AuthBloc(ApiAuth())),
+        BlocProvider(create: (context) => EditInventoryBloc(InventoryApi())),
+        BlocProvider(create: (context) => AddInventoryBloc(InventoryApi())),
         BlocProvider(create: (context) => GetInventoryBloc(InventoryApi())),
-        BlocProvider(create: (context) => UsersBloc()),
-        BlocProvider(create: (context) => CategoryBloc()),
-        BlocProvider(create: (context) => CouponBloc()),
-        BlocProvider(create: (context) => OfferBloc()),
+        BlocProvider(create: (context) => UsersBloc(UsersApi())),
+        BlocProvider(create: (context) => CategoryBloc(CatogeryApi())),
+        BlocProvider(create: (context) => CouponBloc(CouponApi())),
+        BlocProvider(create: (context) => OfferBloc(OfferApi())),
         BlocProvider(create: (context) => OrderBloc(OrderApi()))
       ],
       child: MaterialApp(

@@ -117,7 +117,9 @@ class ScreenOrderDetail extends StatelessWidget {
                                 ? kWidth5
                                 : ElevatedButton(
                                     onPressed: () {
-                                      context.read<OrderBloc>().add(OrderEvent.updatePaymentStatus(id: orderId));
+                                      context.read<OrderBloc>().add(
+                                          OrderEvent.updatePaymentStatus(
+                                              id: orderId));
                                     },
                                     child:
                                         Text('Update Payment Status as PAID'))

@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/services/catogery/catogery.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/delete_catogery_qurrey/delete_catogery_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/get_catogerey_response_model/get_catogerey_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/post_catogery_model/post_catogery_model.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/put_catogery_model/put_catogery_model.dart';
+import 'package:jerseyhub_admin/domain/repositories/catogery_repository.dart';
 
 part 'category_event.dart';
 part 'category_state.dart';
@@ -17,9 +17,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final GlobalKey<FormState> categoryKey = GlobalKey<FormState>();
   final Map<String, int> catogoryMap = {};
 
-  final CatogeryApi catogeryApi = CatogeryApi();
+  final CatogeryRepository catogeryApi;
   String? currentCategory;
-  CategoryBloc() : super(CategoryState.initial()) {
+  CategoryBloc(this.catogeryApi) : super(CategoryState.initial()) {
     on<_GetCaegory>((event, emit) async {
       emit(state.copyWith(isLoading: true, isAdding: false, hasError: false));
       final tokenModel = await SharedPref.getToken();

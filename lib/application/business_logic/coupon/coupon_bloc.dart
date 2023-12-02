@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/services/coupon/coupon.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/add_coupon_model/add_coupon_model.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delete_coupen_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/get_coupons_response_model/get_coupons_response_model.dart';
+import 'package:jerseyhub_admin/domain/repositories/coupon_repository.dart';
 
 part 'coupon_event.dart';
 part 'coupon_state.dart';
@@ -16,8 +16,8 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
   final TextEditingController couponNameController = TextEditingController();
   final TextEditingController couponAmountController = TextEditingController();
   final GlobalKey<FormState> couponKey = GlobalKey<FormState>();
-  final CouponApi couponApi = CouponApi();
-  CouponBloc() : super(CouponState.initial()) {
+  final CouponRepository couponApi;
+  CouponBloc(this.couponApi) : super(CouponState.initial()) {
     on<_AddCoupon>((event, emit) async {
       final tokenModel = await SharedPref.getToken();
       emit(state.copyWith(isLoading: true, hasError: false, isDone: false));

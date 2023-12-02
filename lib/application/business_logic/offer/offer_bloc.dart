@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/services/offer/offer.dart';
 import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/offer/add_offer_model/add_offer_model.dart';
 import 'package:jerseyhub_admin/domain/models/offer/delete_offer_qurrey/delete_offer_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/offer/get_offer_response_model/get_offer_response_model.dart';
+import 'package:jerseyhub_admin/domain/repositories/offer_repository.dart';
 
 part 'offer_event.dart';
 part 'offer_state.dart';
@@ -13,9 +13,9 @@ part 'offer_bloc.freezed.dart';
 
 class OfferBloc extends Bloc<OfferEvent, OfferState> {
   final TextEditingController offerAmountController = TextEditingController();
-  final OfferApi offerApi = OfferApi();
+  final OfferRepository offerApi;
 
-  OfferBloc() : super(OfferState.initial()) {
+  OfferBloc(this.offerApi) : super(OfferState.initial()) {
     on<_GetOffers>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
       final tokenModel = await SharedPref.getToken();

@@ -11,9 +11,15 @@ part 'order_bloc.freezed.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final OrderRepository orderApi;
-  final List<String>status =['PENDING', 'SHIPPED','DELIVERED','CANCELED','RETURNED'];
-  String currentStatus='';
-  String currentPaymentStatus='';
+  final List<String> status = [
+    'PENDING',
+    'SHIPPED',
+    'DELIVERED',
+    'CANCELED',
+    'RETURNED'
+  ];
+  String currentStatus = '';
+  String currentPaymentStatus = '';
   OrderBloc(this.orderApi) : super(OrderState.initial()) {
     on<_GetOrders>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
@@ -30,11 +36,11 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         emit(
           state.copyWith(
             isLoading: false,
-            pending: data!.pending??[],
-            cancled: data.canceled??[],
-            returned: data.returned??[],
-            delivered: data.delivered??[],
-            shipped: data.shipped??[],
+            pending: data!.pending ?? [],
+            cancled: data.canceled ?? [],
+            returned: data.returned ?? [],
+            delivered: data.delivered ?? [],
+            shipped: data.shipped ?? [],
           ),
         );
       });
@@ -52,15 +58,15 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           ),
         ),
         (response) {
-          currentPaymentStatus='PAID';
+          currentPaymentStatus = 'PAID';
           emit(
-          state.copyWith(
-            isLoading: false,
-            isDone: true,
-            message: 'Payment status updated successfully',
-          ),
-        );
-        add(OrderEvent.getOrderById(id: event.id));
+            state.copyWith(
+              isLoading: false,
+              isDone: true,
+              message: 'Payment status updated successfully',
+            ),
+          );
+          add(OrderEvent.getOrderById(id: event.id));
         },
       );
     });
@@ -78,15 +84,15 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           ),
         ),
         (response) {
-          currentStatus=event.updateOrderStatusModel.orderStatus!;
+          currentStatus = event.updateOrderStatusModel.orderStatus!;
           emit(
-          state.copyWith(
-            isLoading: false,
-            isDone: true,
-            message: 'Status updated successfully',
-          ),
-        );
-        add(const OrderEvent.getOrders());
+            state.copyWith(
+              isLoading: false,
+              isDone: true,
+              message: 'Status updated successfully',
+            ),
+          );
+          add(const OrderEvent.getOrders());
         },
       );
     });
@@ -96,23 +102,16 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       final result = await orderApi.getOrderDetail(id: event.id);
       result.fold(
         (failure) => emit(
-          state.copyWith(
-            isLoading: false,
-            orderDetail: null
-          ),
+          state.copyWith(isLoading: false, orderDetail: null),
         ),
         (response) {
-          currentStatus=response.data?.orderStatus??'';
-          currentPaymentStatus=response.data?.paymentStatus??'NOTPAID';
+          currentStatus = response.data?.orderStatus ?? '';
+          currentPaymentStatus = response.data?.paymentStatus ?? 'NOTPAID';
           emit(
-          state.copyWith(
-            isLoading: false,
-            orderDetail: response.data
-          ),
-        );
+            state.copyWith(isLoading: false, orderDetail: response.data),
+          );
         },
       );
     });
-
   }
 }
