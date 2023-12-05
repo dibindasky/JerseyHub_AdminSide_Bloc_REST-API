@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/add_coupon_model/add_coupon_model.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delete_coupen_qurrey.dart';
@@ -19,10 +18,8 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
   final CouponRepository couponApi;
   CouponBloc(this.couponApi) : super(CouponState.initial()) {
     on<_AddCoupon>((event, emit) async {
-      final tokenModel = await SharedPref.getToken();
-      emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
       final result = await couponApi.addCoupon(
-          addCouponModel: event.addCouponModel, tokenModel: tokenModel);
+          addCouponModel: event.addCouponModel );
       result.fold(
           (failure) => emit(state.copyWith(
               isLoading: false,
@@ -37,9 +34,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
     });
 
     on<_GetCoupon>((event, emit) async {
-      final tokenModel = await SharedPref.getToken();
-      emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
-      final result = await couponApi.getCoupon(tokenModel: tokenModel);
+      final result = await couponApi.getCoupon();
       result.fold(
           (failure) => emit(state.copyWith(
               isLoading: false,
@@ -51,10 +46,8 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
     });
 
     on<_DeleteCoupon>((event, emit) async {
-      final tokenModel = await SharedPref.getToken();
-      emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
       final result = await couponApi.deleteCoupon(
-          tokenModel: tokenModel, deleteCoupenQurrey: event.deleteCoupenQurrey);
+          deleteCoupenQurrey: event.deleteCoupenQurrey);
       result.fold(
           (failure) => emit(state.copyWith(
               isLoading: false,
@@ -67,10 +60,7 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
     });
 
     on<_ActivateCoupon>((event, emit) async {
-      final tokenModel = await SharedPref.getToken();
-      emit(state.copyWith(isLoading: true, hasError: false, isDone: false));
       final result = await couponApi.activateCoupon(
-          tokenModel: tokenModel,
           couponActivateQurrey: event.couponActivateQurrey);
       result.fold(
           (failure) => emit(state.copyWith(

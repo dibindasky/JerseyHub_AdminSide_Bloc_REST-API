@@ -13,31 +13,25 @@ import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_response/update_inventory_image_response.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_model/update_inventory_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_response_model/update_inventory_response_model.dart';
-import 'package:jerseyhub_admin/domain/models/token/token.dart';
 
 abstract class InventoryRepository {
   Future<Either<Failure, AddInventoryResponseModel>> addInventory(
-      {required FormData formData, required TokenModel tokenModel});
+      {required FormData formData});
 
   Future<Either<Failure, GetInventoryResponseModel>> getInventory(
-      {required GetResponseQurrey getResponseQurrey,
-      required TokenModel tokenModel});
+      {required GetResponseQurrey getResponseQurrey});
 
   Future<Either<Failure, UpdateInventoryResponseModel>> updateStockInventory(
-      {required UpdateInventoryModel updateInventoryModel,
-      required TokenModel tokenModel});
+      {required UpdateInventoryModel updateInventoryModel});
 
   Future<Either<Failure, DeleteInventoryResponseModel>> deleteInventory(
-      {required TokenModel tokenModel,
-      required DeleteInventoryQurrey deleteInventory});
+      {required DeleteInventoryQurrey deleteInventory});
 
   Future<Either<Failure, UpdateInventoryImageResponse>> updateImageInventory(
-      {required TokenModel tokenModel,
-      required UpdateInventoryImageQurrey updateInventoryImageQurrey,
+      {required UpdateInventoryImageQurrey updateInventoryImageQurrey,
       required FormData formData});
 
   Future<Either<Failure, EditInventoryResponseModel>> editInventoryDetails(
-      {required TokenModel tokenModel,
-      required EditInventoryDetailsQurrey editInventoryDetailsQurrey,
+      {required EditInventoryDetailsQurrey editInventoryDetailsQurrey,
       required EditInventoruDetailsModel editInventoruDetailsModel});
 }

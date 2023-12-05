@@ -8,7 +8,6 @@ import 'package:jerseyhub_admin/domain/models/catogery/delete_catogery_qurrey/de
 import 'package:jerseyhub_admin/domain/models/catogery/get_catogerey_response_model/get_catogerey_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/post_catogery_model/post_catogery_model.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/put_catogery_model/put_catogery_model.dart';
-import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/catogery_repository.dart';
 
 class CatogeryApi implements CatogeryRepository {
@@ -17,8 +16,7 @@ class CatogeryApi implements CatogeryRepository {
       dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
   @override
   Future<Either<Failure, CatogeryResponseModel>> addCatogery(
-      {required TokenModel tokenModel,
-      required PostCatogeryModel postCatogeryModel}) async {
+      {required PostCatogeryModel postCatogeryModel}) async {
     try {
       final response = await apiService.post(ApiEndPoints.catogery,
           data: postCatogeryModel.toJson());
@@ -36,8 +34,7 @@ class CatogeryApi implements CatogeryRepository {
 
   @override
   Future<Either<Failure, CatogeryResponseModel>> deleteCatogery(
-      {required DeleteCatogeryQurrey deleteCatogeryQurrey,
-      required TokenModel tokenModel}) async {
+      {required DeleteCatogeryQurrey deleteCatogeryQurrey}) async {
     try {
       final response = await apiService.delete(ApiEndPoints.catogery,
           queryParameters: deleteCatogeryQurrey.toJson());
@@ -55,8 +52,7 @@ class CatogeryApi implements CatogeryRepository {
 
   @override
   Future<Either<Failure, CatogeryResponseModel>> editCatogery(
-      {required PutCatogeryModel putCatogeryModel,
-      required TokenModel tokenModel}) async {
+      {required PutCatogeryModel putCatogeryModel}) async {
     try {
       final response = await apiService.put(ApiEndPoints.catogery,
           data: putCatogeryModel.toJson());
@@ -73,8 +69,7 @@ class CatogeryApi implements CatogeryRepository {
   }
 
   @override
-  Future<Either<Failure, GetCatogereyResponseModel>> getCatogery(
-      {required TokenModel tokenModel}) async {
+  Future<Either<Failure, GetCatogereyResponseModel>> getCatogery() async {
     try {
       final response = await apiService.get(ApiEndPoints.catogery);
       if (response.statusCode == 200) {

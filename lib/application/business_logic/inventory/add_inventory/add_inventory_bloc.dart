@@ -25,7 +25,7 @@ class AddInventoryBloc extends Bloc<AddInventoryEvent, AddInventoryState> {
       emit(AddInventoryState.initial().copyWith(isLoading: true));
       final tockens = await SharedPref.getToken();
       final result = await inventoryApi.addInventory(
-          formData: event.formData, tokenModel: tockens);
+          formData: event.formData);
       result.fold((failure) {
         emit(state.copyWith(isLoading: false, hasError: true));
       }, (addInventoryResponseModel) {

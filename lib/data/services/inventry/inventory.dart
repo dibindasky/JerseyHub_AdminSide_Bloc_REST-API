@@ -15,7 +15,6 @@ import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_response/update_inventory_image_response.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_model/update_inventory_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_response_model/update_inventory_response_model.dart';
-import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
 
 class InventoryApi implements InventoryRepository {
@@ -25,7 +24,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, AddInventoryResponseModel>> addInventory(
-      {required FormData formData, required TokenModel tokenModel}) async {
+      {required FormData formData}) async {
     try {
       final response = await apiService.post(ApiEndPoints.inventory,
           data: formData, headers: {'content-Type': 'multipart/form-data'});
@@ -43,8 +42,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, DeleteInventoryResponseModel>> deleteInventory(
-      {required TokenModel tokenModel,
-      required DeleteInventoryQurrey deleteInventory}) async {
+      {required DeleteInventoryQurrey deleteInventory}) async {
     try {
       final response = await apiService.delete(ApiEndPoints.inventory,
           queryParameters: deleteInventory.toJson());
@@ -62,8 +60,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, GetInventoryResponseModel>> getInventory(
-      {required GetResponseQurrey getResponseQurrey,
-      required TokenModel tokenModel}) async {
+      {required GetResponseQurrey getResponseQurrey}) async {
     try {
       final response = await apiService.get(ApiEndPoints.inventory,
           queryParameters: getResponseQurrey.toJson());
@@ -81,8 +78,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, UpdateInventoryResponseModel>> updateStockInventory(
-      {required UpdateInventoryModel updateInventoryModel,
-      required TokenModel tokenModel}) async {
+      {required UpdateInventoryModel updateInventoryModel}) async {
     try {
       final response = await apiService.put(ApiEndPoints.inventoryStock,
           data: updateInventoryModel.toJson());
@@ -105,8 +101,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, UpdateInventoryImageResponse>> updateImageInventory(
-      {required TokenModel tokenModel,
-      required UpdateInventoryImageQurrey updateInventoryImageQurrey,
+      {required UpdateInventoryImageQurrey updateInventoryImageQurrey,
       required FormData formData}) async {
     try {
       final response = await apiService.put(ApiEndPoints.inventoryImage,
@@ -129,8 +124,7 @@ class InventoryApi implements InventoryRepository {
 
   @override
   Future<Either<Failure, EditInventoryResponseModel>> editInventoryDetails(
-      {required TokenModel tokenModel,
-      required EditInventoryDetailsQurrey editInventoryDetailsQurrey,
+      {required EditInventoryDetailsQurrey editInventoryDetailsQurrey,
       required EditInventoruDetailsModel editInventoruDetailsModel}) async {
     try {
       final response = await apiService.put(ApiEndPoints.inventoryImage,

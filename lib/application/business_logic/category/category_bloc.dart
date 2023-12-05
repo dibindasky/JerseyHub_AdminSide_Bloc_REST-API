@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/delete_catogery_qurrey/delete_catogery_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/get_catogerey_response_model/get_catogerey_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/catogery/post_catogery_model/post_catogery_model.dart';
@@ -22,8 +21,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   CategoryBloc(this.catogeryApi) : super(CategoryState.initial()) {
     on<_GetCaegory>((event, emit) async {
       emit(state.copyWith(isLoading: true, isAdding: false, hasError: false));
-      final tokenModel = await SharedPref.getToken();
-      final result = await catogeryApi.getCatogery(tokenModel: tokenModel);
+      final result = await catogeryApi.getCatogery();
       result.fold(
           (failure) => emit(state.copyWith(
               isLoading: false,
@@ -55,9 +53,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isAdding: true,
           isDone: false,
           message: null));
-      final tokenModel = await SharedPref.getToken();
       final result = await catogeryApi.addCatogery(
-          tokenModel: tokenModel, postCatogeryModel: event.postCatogeryModel);
+           postCatogeryModel: event.postCatogeryModel);
       result.fold(
           (failure) => emit(state.copyWith(
               isLoading: false,
@@ -80,9 +77,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isDone: false,
           isupdating: false,
           message: null));
-      final tokenModel = await SharedPref.getToken();
       final result = await catogeryApi.deleteCatogery(
-          tokenModel: tokenModel,
           deleteCatogeryQurrey: event.deleteCatogeryQurrey);
       result.fold(
           (failure) => emit(state.copyWith(
@@ -105,9 +100,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isupdating: false,
           isDone: false,
           message: null));
-      final tokenModel = await SharedPref.getToken();
-      final result = await catogeryApi.editCatogery(
-          tokenModel: tokenModel, putCatogeryModel: event.putCatogeryModel);
+      final result = await catogeryApi.editCatogery(putCatogeryModel: event.putCatogeryModel);
       result.fold(
           (failure) => emit(state.copyWith(
                 isLoading: false,

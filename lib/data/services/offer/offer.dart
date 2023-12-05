@@ -7,7 +7,6 @@ import 'package:jerseyhub_admin/domain/models/offer/add_offer_model/add_offer_mo
 import 'package:jerseyhub_admin/domain/models/offer/delete_offer_qurrey/delete_offer_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/offer/get_offer_response_model/get_offer_response_model.dart';
 import 'package:jerseyhub_admin/domain/models/offer/offer_response_model/offer_response_model.dart';
-import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/offer_repository.dart';
 
 class OfferApi implements OfferRepository {
@@ -16,8 +15,7 @@ class OfferApi implements OfferRepository {
       dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
   @override
   Future<Either<Failure, OfferResponseModel>> addOffer(
-      {required AddOfferModel addOfferModel,
-      required TokenModel tokenModel}) async {
+      {required AddOfferModel addOfferModel}) async {
     try {
       final response = await apiService.post(ApiEndPoints.offer,
           data: addOfferModel.toJson());
@@ -35,8 +33,7 @@ class OfferApi implements OfferRepository {
 
   @override
   Future<Either<Failure, OfferResponseModel>> deleteOffer(
-      {required TokenModel tokenModel,
-      required DeleteOfferQurrey deleteCoupenQurrey}) async {
+      {required DeleteOfferQurrey deleteCoupenQurrey}) async {
     try {
       final response = await apiService.delete(ApiEndPoints.offer,
           queryParameters: deleteCoupenQurrey.toJson());
@@ -53,8 +50,7 @@ class OfferApi implements OfferRepository {
   }
 
   @override
-  Future<Either<Failure, GetOfferResponseModel>> getOffer(
-      {required TokenModel tokenModel}) async {
+  Future<Either<Failure, GetOfferResponseModel>> getOffer() async {
     try {
       final response = await apiService.get(ApiEndPoints.offer);
       if (response.statusCode == 200) {

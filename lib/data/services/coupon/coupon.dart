@@ -8,7 +8,6 @@ import 'package:jerseyhub_admin/domain/models/coupons/coupen_response_model/coup
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delete_coupen_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/get_coupons_response_model/get_coupons_response_model.dart';
-import 'package:jerseyhub_admin/domain/models/token/token.dart';
 import 'package:jerseyhub_admin/domain/repositories/coupon_repository.dart';
 
 class CouponApi implements CouponRepository {
@@ -17,8 +16,7 @@ class CouponApi implements CouponRepository {
       dio: Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl)));
   @override
   Future<Either<Failure, CoupenResponseModel>> addCoupon(
-      {required AddCouponModel addCouponModel,
-      required TokenModel tokenModel}) async {
+      {required AddCouponModel addCouponModel}) async {
     try {
       final response = await apiService.post(ApiEndPoints.coupon,
           data: addCouponModel.toJson());
@@ -36,8 +34,7 @@ class CouponApi implements CouponRepository {
 
   @override
   Future<Either<Failure, CoupenResponseModel>> deleteCoupon(
-      {required TokenModel tokenModel,
-      required DeleteCoupenQurrey deleteCoupenQurrey}) async {
+      {required DeleteCoupenQurrey deleteCoupenQurrey}) async {
     try {
       final response = await apiService.delete(ApiEndPoints.coupon,
           queryParameters: deleteCoupenQurrey.toJson());
@@ -54,8 +51,7 @@ class CouponApi implements CouponRepository {
   }
 
   @override
-  Future<Either<Failure, GetCouponsResponseModel>> getCoupon(
-      {required TokenModel tokenModel}) async {
+  Future<Either<Failure, GetCouponsResponseModel>> getCoupon() async {
     try {
       final response = await apiService.get(ApiEndPoints.coupon);
       if (response.statusCode == 200) {
@@ -72,8 +68,7 @@ class CouponApi implements CouponRepository {
 
   @override
   Future<Either<Failure, CoupenResponseModel>> activateCoupon(
-      {required TokenModel tokenModel,
-      required CouponActivateQurrey couponActivateQurrey}) async {
+      {required CouponActivateQurrey couponActivateQurrey}) async {
     try {
       final response = await apiService.put(ApiEndPoints.coupon,
           queryParameters: couponActivateQurrey.toJson());

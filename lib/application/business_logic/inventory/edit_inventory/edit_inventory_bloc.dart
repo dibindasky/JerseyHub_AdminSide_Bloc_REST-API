@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/image_picker/image_picker.dart';
-import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/delete/delete_inventory_qurrey/delete_inventory_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_image_qurrey/update_inventory_image_qurrey.dart';
@@ -31,9 +30,8 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
 
     on<_AddStock>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false, message: null));
-      final tokens = await SharedPref.getToken();
       final result = await inventoryApi.updateStockInventory(
-          updateInventoryModel: event.updateInventoryModel, tokenModel: tokens);
+          updateInventoryModel: event.updateInventoryModel);
       result.fold(
         (failure) => emit(
           state.copyWith(
@@ -60,9 +58,8 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
 
     on<_DeleteInventory>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false, message: null));
-      final tokens = await SharedPref.getToken();
       final result = await inventoryApi.deleteInventory(
-          tokenModel: tokens, deleteInventory: event.deleteInventoryQurrey);
+          deleteInventory: event.deleteInventoryQurrey);
       result.fold(
         (failure) => emit(
           state.copyWith(
@@ -89,9 +86,8 @@ class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
       if (image == null) return;
       emit(state.copyWith(isImageUploading: true));
       Map<String, dynamic> imageMap = {"image": image.multipartFile};
-      final tokens = await SharedPref.getToken();
       final result = await inventoryApi.updateImageInventory(
-          tokenModel: tokens,
+          
           formData: FormData.fromMap(imageMap),
           updateInventoryImageQurrey: event.updateInventoryImageQurrey);
       result.fold(

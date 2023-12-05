@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jerseyhub_admin/data/shared_preference/shared_pref.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_response_qurrey/get_response_qurrey.dart';
 import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
@@ -18,10 +17,10 @@ class GetInventoryBloc extends Bloc<GetInventoryEvent, GetInventoryState> {
       : super(GetInventoryState.initial()) {
     on<_GetInventoryCall>((event, emit) async {
       emit(state.copyWith(isLoading: true, hasError: false));
-      final tokens = await SharedPref.getToken();
+      
       page = 1;
       final response = await inventoryRepository.getInventory(
-          getResponseQurrey: GetResponseQurrey(page: page), tokenModel: tokens);
+          getResponseQurrey: GetResponseQurrey(page: page));
       response.fold(
           (failure) => emit(state.copyWith(isLoading: false, hasError: true)),
           (getInventoryResponseModel) => emit(state.copyWith(
@@ -32,11 +31,10 @@ class GetInventoryBloc extends Bloc<GetInventoryEvent, GetInventoryState> {
     on<_NextPage>((event, emit) async {
       emit(state.copyWith(loadMore: true));
       isScrollLoading = true;
-      final tokenModel = await SharedPref.getToken();
       page += 1;
       final result = await inventoryRepository.getInventory(
-          getResponseQurrey: GetResponseQurrey(page: page),
-          tokenModel: tokenModel);
+          getResponseQurrey: GetResponseQurrey(page: page)
+         );
       result.fold(
         (failure) => emit(state.copyWith(loadMore: false)),
         (getInventoryResponseModel) {
