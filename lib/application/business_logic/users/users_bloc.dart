@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/domain/models/users/block_unblock_user_qurrey/block_unblock_user_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/users/get_users_qurrey/get_users_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/users/get_users_response_model/get_users_response_model.dart';
@@ -9,6 +10,7 @@ part 'users_event.dart';
 part 'users_state.dart';
 part 'users_bloc.freezed.dart';
 
+@injectable
 class UsersBloc extends Bloc<UsersEvent, UsersState> {
   final UsersRepository usersApi;
   UsersBloc(this.usersApi) : super(UsersState.initial()) {

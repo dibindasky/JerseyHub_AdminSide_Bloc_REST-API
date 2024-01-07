@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
@@ -17,6 +18,8 @@ import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_
 import 'package:jerseyhub_admin/domain/models/inventory/update/update_inventory_response_model/update_inventory_response_model.dart';
 import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
 
+@LazySingleton(as: InventoryRepository)
+@injectable
 class InventoryApi implements InventoryRepository {
   final ApiService apiService = ApiService(
       baseUrl: ApiEndPoints.baseUrl,

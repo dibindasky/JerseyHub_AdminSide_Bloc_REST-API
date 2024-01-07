@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/add_coupon_model/add_coupon_model.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/coupon_activate_qurrey/coupon_activate_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delete_coupen_qurrey.dart';
@@ -11,6 +12,7 @@ part 'coupon_event.dart';
 part 'coupon_state.dart';
 part 'coupon_bloc.freezed.dart';
 
+@injectable
 class CouponBloc extends Bloc<CouponEvent, CouponState> {
   final TextEditingController couponNameController = TextEditingController();
   final TextEditingController couponAmountController = TextEditingController();

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
@@ -10,6 +11,8 @@ import 'package:jerseyhub_admin/domain/models/coupons/delete_coupen_qurrey/delet
 import 'package:jerseyhub_admin/domain/models/coupons/get_coupons_response_model/get_coupons_response_model.dart';
 import 'package:jerseyhub_admin/domain/repositories/coupon_repository.dart';
 
+@LazySingleton(as: CouponRepository)
+@injectable
 class CouponApi implements CouponRepository {
   final ApiService apiService = ApiService(
       baseUrl: ApiEndPoints.baseUrl,

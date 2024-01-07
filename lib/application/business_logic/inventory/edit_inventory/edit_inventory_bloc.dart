@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/application/presentation/utils/image_picker/image_picker.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/delete/delete_inventory_qurrey/delete_inventory_qurrey.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/image/image_model.dart';
@@ -13,6 +14,7 @@ part 'edit_inventory_event.dart';
 part 'edit_inventory_state.dart';
 part 'edit_inventory_bloc.freezed.dart';
 
+@injectable
 class EditInventoryBloc extends Bloc<EditInventoryEvent, EditInventoryState> {
   final InventoryRepository inventoryApi;
   final TextEditingController stockUpdateController =

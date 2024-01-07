@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_inventory_r_espoonse_model/inventory.dart';
 import 'package:jerseyhub_admin/domain/models/inventory/get/get_response_qurrey/get_response_qurrey.dart';
 import 'package:jerseyhub_admin/domain/repositories/inventory_repository.dart';
@@ -8,6 +9,7 @@ part 'get_inventory_event.dart';
 part 'get_inventory_state.dart';
 part 'get_inventory_bloc.freezed.dart';
 
+@injectable
 class GetInventoryBloc extends Bloc<GetInventoryEvent, GetInventoryState> {
   final InventoryRepository inventoryRepository;
   int page = 1;

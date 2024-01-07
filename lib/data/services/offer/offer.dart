@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
@@ -9,6 +10,8 @@ import 'package:jerseyhub_admin/domain/models/offer/get_offer_response_model/get
 import 'package:jerseyhub_admin/domain/models/offer/offer_response_model/offer_response_model.dart';
 import 'package:jerseyhub_admin/domain/repositories/offer_repository.dart';
 
+@LazySingleton(as: OfferRepository)
+@injectable
 class OfferApi implements OfferRepository {
   final ApiService apiService = ApiService(
       baseUrl: ApiEndPoints.baseUrl,

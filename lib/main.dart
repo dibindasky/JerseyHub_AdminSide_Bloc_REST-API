@@ -10,17 +10,13 @@ import 'package:jerseyhub_admin/application/business_logic/inventory/get_invento
 import 'package:jerseyhub_admin/application/business_logic/offer/offer_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/order/order_bloc.dart';
 import 'package:jerseyhub_admin/application/business_logic/users/users_bloc.dart';
-import 'package:jerseyhub_admin/data/services/auth/auth.dart';
-import 'package:jerseyhub_admin/data/services/catogery/catogery.dart';
-import 'package:jerseyhub_admin/data/services/coupon/coupon.dart';
-import 'package:jerseyhub_admin/data/services/inventry/inventory.dart';
-import 'package:jerseyhub_admin/data/services/offer/offer.dart';
-import 'package:jerseyhub_admin/data/services/order/order.dart';
-import 'package:jerseyhub_admin/data/services/users/users.dart';
+import 'package:jerseyhub_admin/data/services/order/order_service.dart';
+import 'package:jerseyhub_admin/domain/core/di/dipendency_injection.dart';
 import 'application/presentation/routes/routes.dart';
 import 'application/presentation/routes/routes_generator.dart';
 
-void main() {
+Future<void> main() async {
+  await configuteInjection();
   runApp(JerseyHubAdmin());
 }
 
@@ -34,14 +30,14 @@ class JerseyHubAdmin extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BottomBarCubitCubit()),
-        BlocProvider(create: (context) => AuthBloc(ApiAuth())),
-        BlocProvider(create: (context) => EditInventoryBloc(InventoryApi())),
-        BlocProvider(create: (context) => AddInventoryBloc(InventoryApi())),
-        BlocProvider(create: (context) => GetInventoryBloc(InventoryApi())),
-        BlocProvider(create: (context) => UsersBloc(UsersApi())),
-        BlocProvider(create: (context) => CategoryBloc(CatogeryApi())),
-        BlocProvider(create: (context) => CouponBloc(CouponApi())),
-        BlocProvider(create: (context) => OfferBloc(OfferApi())),
+        BlocProvider(create: (context) => getIt<AuthBloc>()),
+        BlocProvider(create: (context) => getIt<EditInventoryBloc>()),
+        BlocProvider(create: (context) => getIt<AddInventoryBloc>()),
+        BlocProvider(create: (context) => getIt<GetInventoryBloc>()),
+        BlocProvider(create: (context) => getIt<UsersBloc>()),
+        BlocProvider(create: (context) => getIt<CategoryBloc>()),
+        BlocProvider(create: (context) => getIt<CouponBloc>()),
+        BlocProvider(create: (context) => getIt<OfferBloc>()),
         BlocProvider(create: (context) => OrderBloc(OrderApi()))
       ],
       child: MaterialApp(

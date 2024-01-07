@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/error.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_model/login_model.dart';
 import 'package:jerseyhub_admin/domain/models/login_models/login_response/login_response.dart';
 import 'package:jerseyhub_admin/domain/repositories/authentication_repository.dart';
 
+@LazySingleton(as: AuthRepository)
+@injectable
 class ApiAuth implements AuthRepository {
   final Dio _dio = Dio(BaseOptions(baseUrl: ApiEndPoints.baseUrl));
 

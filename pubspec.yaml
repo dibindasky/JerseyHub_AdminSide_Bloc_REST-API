@@ -47,11 +47,14 @@ dependencies:
   shared_preferences: ^2.2.1
   flutter_floating_bottom_bar: ^1.2.0
   image_picker: ^1.0.4
+  get_it: ^7.6.6
+  injectable: ^2.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.2
+  injectable_generator: ^2.4.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

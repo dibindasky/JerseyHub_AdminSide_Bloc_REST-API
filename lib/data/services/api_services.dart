@@ -6,7 +6,21 @@ class ApiService {
   final Dio dio;
   final String baseUrl;
 
-  ApiService({required this.dio, required this.baseUrl});
+  ApiService({required this.dio, required this.baseUrl}) {
+    //   dio.options.connectTimeout=Duration(seconds: 3);
+    //   dio.interceptors.add(InterceptorsWrapper(
+    //     onRequest: (options, handler) async {
+    //       final accessToken =
+    //           await SharedPref.getToken().then((token) => token.accessToken);
+    //       dio.options.headers['Authorization'] = accessToken;
+    //       options.headers['Authorization'] = accessToken;
+    //       print(dio.options.headers);
+    //       print(options.headers);
+    //       return handler.next(options);
+    //     },
+    //     onError: (e, handler) async {},
+    //   ));
+  }
 
   Future<Response<dynamic>> get(
     String url, {
@@ -150,7 +164,8 @@ class ApiService {
         await SharedPref.getToken().then((token) => token.accessToken);
     dio.options.headers['Authorization'] = accessToken;
     return await dio.request(requestOptions.path,
-        queryParameters: requestOptions.queryParameters);
+        queryParameters: requestOptions.queryParameters,
+        data: requestOptions.data);
   }
 }
 

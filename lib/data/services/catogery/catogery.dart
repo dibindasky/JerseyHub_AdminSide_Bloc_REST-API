@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:jerseyhub_admin/data/services/api_services.dart';
 import 'package:jerseyhub_admin/domain/core/api_endpoints/api_endpoints.dart';
 import 'package:jerseyhub_admin/domain/core/failure/failures.dart';
@@ -10,6 +11,8 @@ import 'package:jerseyhub_admin/domain/models/catogery/post_catogery_model/post_
 import 'package:jerseyhub_admin/domain/models/catogery/put_catogery_model/put_catogery_model.dart';
 import 'package:jerseyhub_admin/domain/repositories/catogery_repository.dart';
 
+@LazySingleton(as: CatogeryRepository)
+@injectable
 class CatogeryApi implements CatogeryRepository {
   final ApiService apiService = ApiService(
       baseUrl: ApiEndPoints.baseUrl,
